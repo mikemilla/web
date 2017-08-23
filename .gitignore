@@ -1,0 +1,4 @@
+# Libraries and Components
+node_modules/*
+bower_components/*
+.tmp/*
