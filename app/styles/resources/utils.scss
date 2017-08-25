@@ -1,0 +1,14 @@
+
+// Setting columns
+@mixin columns($count) {
+  -webkit-columns: $count;
+  -moz-columns: $count;
+  columns: $count;
+}
+
+// Setting column gap
+@mixin column-gap($size) {
+    -webkit-column-gap: $size;
+    -moz-column-gap: $size;
+    column-gap: $size;
+  }

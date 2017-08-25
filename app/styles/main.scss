@@ -1,41 +1,51 @@
 // bower:scss
 // endbower
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+// Imports
+@import "resources/config";
 
-body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+// Main
+html, body {
   margin: 0;
+  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+  font-family: $primary-font;
+  color: $color-font;
+  background: $color-primary;
+  -webkit-tap-highlight-color: transparent;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+// Keylines
+.keylines {
+
+  // Aligns view
+  padding-left: 0px;
+  padding-right: 0px;
+
+  // Centers view
   margin-left: auto;
   margin-right: auto;
+  $margins: 64px * 2;
+  width: $desktop - $margins;
 
-  column-width: 400px;
-  width: 832px;
+  @include device-breakpoint($desktop) {
+    padding-left: 64px;
+    padding-right: 64px;
+    width: inherit;
+  }
 
-  li {
-    width: 400px;
-    display: inline-block;
-    background: red;
+  @include device-breakpoint($tablet) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-    &:nth-child(4) {
-      height: 500px;
-      background: blue;
-    }
-
-    video {
-      width: 100%;
-    }
+  @include device-breakpoint($phone) {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
+
+// Views
+@import "views/hero";
+@import "views/grid";
+@import "views/footer";
