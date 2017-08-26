@@ -5,6 +5,7 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const shell = require('gulp-shell')
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -91,6 +92,10 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
+gulp.task('firebase', shell.task([
+  'firebase deploy'
+]))
+
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
@@ -172,5 +177,12 @@ gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
     runSequence(['clean', 'wiredep'], 'build', resolve);
+  });
+});
+
+gulp.task('deploy', () => {
+  return new Promise(resolve => {
+    dev = false;
+    runSequence(['clean', 'wiredep'], 'build', 'firebase', resolve);
   });
 });
