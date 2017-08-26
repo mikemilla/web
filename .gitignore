@@ -4,3 +4,4 @@ bower_components/*
 
 # Temporary Files
 .tmp/*
+dist/*
