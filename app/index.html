@@ -33,59 +33,48 @@
 
   <div class="hero">
     <div class="keylines">
-      <h1>Michael Miller</h1>
-      <h2>UX Engineer + Product Designer</h2>
-      <p>Designs and develops simple and awesome digital products. Is pretty sweet at building iOS, Android, and web apps. Designs and develops simple and awesome digital products. Is pretty sweet at building iOS, Android, and web apps.</p>
+      <div class="titles">
+        <h1>Michael Miller</h1>
+        <h2>UX Engineer + Product Designer</h2>
+        <p>Designs and develops simple and awesome digital products. Is pretty sweet at building iOS, Android, and web apps. Designs and develops simple and awesome digital products. Is pretty sweet at building iOS, Android, and web apps.</p>
+        <a class="action-button" href="#">Send Message</a>
+      </div>
+      <div class="image"></div>
     </div>
   </div>
 
-  <ul class="keylines">
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-    <li>
-      <video autoplay muted loop playsinline poster="https://scontent.fdet1-2.fna.fbcdn.net/v/t31.0-8/10542712_10205497715469860_7558986513344511254_o.jpg?oh=4243a994d53929c1d0690da00afcd08d&oe=5A37C597">
-        <source src="https://www.w3schools.com/TAgs/movie.mp4"> Your browser does not support HTML5 video.
-      </video>
-    </li>
-  </ul>
+  <div class="grid">
+    <ul class="keylines">
+      <li>
+        <img class="work" src="./images/yes.gif"/>
+      </li>
+      <li>
+        <img class="work" src="./images/prediction-ui.png"/>
+      </li>
+      <li>
+        <video class="work" autoplay muted loop playsinline poster="./images/simple-scale.mov">
+          <source src="./images/simple-scale.mov"> Your browser does not support HTML5 video.
+        </video>
+      </li>
+      <li>
+        <img class="work" src="./images/about-ui.png"/>
+      </li>
+      <li>
+        <video class="work" autoplay muted loop playsinline poster="./images/huntwise.mov">
+          <source src="./images/huntwise.mov"> Your browser does not support HTML5 video.
+        </video>
+      </li>
+      <li>
+        <img class="work" src="./images/hunting-prediction-photo.jpg"/>
+      </li>
+      <li>
+        <img class="work" src="./images/locations-ui.png"/>
+      </li>
+      <li>
+        <img class="work" src="./images/menu-ui.png"/>
+      </li>
+    </ul>
+  </div>
 
   <footer></footer>
 
@@ -111,6 +100,8 @@
   <!-- build:js scripts/main.js -->
   <script src="scripts/main.js"></script>
   <!-- endbuild -->
+
+  <script type="text/javascript" src="./locales/en-US.json"></script>
 </body>
 
 </html>

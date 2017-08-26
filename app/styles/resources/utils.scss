@@ -8,7 +8,23 @@
 
 // Setting column gap
 @mixin column-gap($size) {
-    -webkit-column-gap: $size;
-    -moz-column-gap: $size;
-    column-gap: $size;
-  }
+  -webkit-column-gap: $size;
+  -moz-column-gap: $size;
+  column-gap: $size;
+}
+
+// Flex support
+@mixin flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// Corner radius support
+@mixin corner-radius($radius) {
+  border-radius: $radius $radius $radius $radius;
+  -moz-border-radius: $radius $radius $radius $radius;
+  -webkit-border-radius: $radius $radius $radius $radius;
+}

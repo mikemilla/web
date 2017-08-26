@@ -1,55 +1,75 @@
-ul {
+.grid {
+  background: white;
+
+  // Variables
+  $desktop-margin: 64px;
+  $tablet-margin: 32px;
+  $mobile-margin: 24px;
+
+  ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     font-size: 0;
-    background: white;
+    margin-left: auto;
+    margin-right: auto;
   
     // Desktop
     @include columns(3);
-    @include column-gap(64px);
-    padding-top: 64px;
+    @include column-gap($desktop-margin);
+    padding-top: $desktop-margin;
+
+    // Tablet break
+    @include device-breakpoint($desktop) {
+      padding-left: $desktop-margin;
+      padding-right: $desktop-margin;
+  }
 
     // Tablet break
     @include device-breakpoint($tablet) {
-        @include columns(2);
-        @include column-gap(32px);
-        padding-top: 32px;
+      @include columns(2);
+      @include column-gap($tablet-margin);
+      padding-top: $tablet-margin;
+      padding-left: $tablet-margin;
+      padding-right: $tablet-margin;
     }
 
     // Phone break
     @include device-breakpoint($phone) {
-        @include column-gap(16px);
-        padding-top: 16px;
+      @include column-gap($mobile-margin);
+      padding-top: $mobile-margin;
+      padding-left: $mobile-margin;
+      padding-right: $mobile-margin;
     }
   
     li {
       width: 100%;
       overflow: hidden;
       display: inline-block;
-      margin-bottom: 64px;
-      background: blue;
+      margin-bottom: $desktop-margin;
+      background: $color-hero;
+      overflow: hidden;
+      @include corner-radius(10px);
+      -webkit-box-shadow: 0px 0px 0px 2px $color-hero;
+      -moz-box-shadow: 0px 0px 0px 2px $color-hero;
+      box-shadow: 0px 0px 0px 2px $color-hero;
 
       // Tablet break
       @include device-breakpoint($tablet) {
-        margin-bottom: 32px;
+        margin-bottom: $tablet-margin;
       }
 
       // Phone break
       @include device-breakpoint($phone) {
-        margin-bottom: 16px;
+        margin-bottom: $mobile-margin;
       }
   
-      &:nth-child(4) {
-        height: 500px;
-      }
-  
-      &:nth-child(2) {
-        height: 330px;
-      }
-  
-      video {
+      // Showcased piece
+      .work {
         width: 100%;
+        overflow: hidden;
+        @include corner-radius(10px);
       }
     }
   }
+}

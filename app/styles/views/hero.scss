@@ -1,57 +1,92 @@
 .hero {
     height: 85vh;
     background: $color-hero;
-    display: block;
-    position: relative;
-
-    // Reset title margins
-    h1, h2, p {
-        margin: 0;
-        padding: 0;
-        font-weight: 500;
-        width: 50%;
-    }
-
-    h1 {
-        font-size: 34px;
-        padding-top: 64px;
-        padding-bottom: 32px;
-        color: $color-primary;
-    }
-
-    h2 {
-        font-size: 20px;
-        padding-bottom: 16px;
-        opacity: 0.9;
-    }
-
-    p {
-        font-size: 18px;
-        line-height: 26px;
-        opacity: 0.8;
-    }
 
     // Tablet break
     @include device-breakpoint($tablet) {
-
-        h1, h2, p {
-            width: 100%;
-        }
-
-        h1 {
-            padding-top: 32px;
-            padding-bottom: 24px;
-        }
-
-        p {
-            padding-bottom: 32px;
-        }
+        height: auto;
     }
 
-    // Phone break
-    @include device-breakpoint($phone) {
-        h1 {
-            padding-bottom: 16px;
+    // Keyline container
+    .keylines {
+
+        @include flex();
+        flex-direction: row;
+        height: 100%;
+
+        // Titles and buttons
+        .titles {
+            flex: 1;
+            position: relative;
+
+            // Reset title margins
+            h1, h2, p {
+                margin: 0;
+                padding: 0;
+                font-weight: 500;
+                width: 100%;
+            }
+            h1 {
+                font-size: 30px;
+                padding-top: 64px;
+                padding-bottom: 32px;
+                color: $color-primary;
+            }
+            h2 {
+                font-size: 18px;
+                padding-bottom: 16px;
+                opacity: 0.9;
+            }
+            p {
+                font-size: 16px;
+                line-height: 26px;
+                opacity: 0.8;
+            }
+
+            // Button
+            .action-button {
+                position: absolute;
+                bottom: 64px;
+            }
+        }
+
+        // Background image
+        .image {
+            flex: 1;
+            background-image: url('/images/profile.jpg');
+            background-size: 540px auto;
+            background-position-x: right;
+            background-position-y: bottom;
+            background-repeat: no-repeat;
+        }
+
+        // Tablet break
+        @include device-breakpoint($tablet) {
+            .image {
+                display: none;
+            }
+
+            .titles {
+
+                h1, h2, p {
+                    width: 100%;
+                }
+
+                h1 {
+                    padding-top: 48px;
+                    padding-bottom: 24px;
+                }
+
+                p {
+                    padding-bottom: 48px;
+                }
+                
+                .action-button {
+                    margin-bottom: 48px;
+                    position: relative;
+                    bottom: 0;
+                }
+            }
         }
     }
 }
