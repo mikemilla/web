@@ -1,7 +1,4 @@
-# Libraries and Components
-node_modules/*
-bower_components/*
-
-# Temporary Files
-.tmp/*
-dist/*
+.tmp/
+coverage/
+dist/
+node_modules/
