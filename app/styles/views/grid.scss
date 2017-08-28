@@ -6,6 +6,9 @@
   $tablet-margin: 32px;
   $mobile-margin: 24px;
 
+  @include flex;
+  flex-direction: column;
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -47,10 +50,10 @@
       overflow: hidden;
       display: inline-block;
       margin-bottom: $desktop-margin;
-      background: $color-hero;
-      overflow: hidden;
-      @include corner-radius(10px);
+      background: $color-border;
       @include shadow-border();
+      @include corner-radius(10px);
+      overflow: hidden;
 
       // Tablet break
       @include device-breakpoint($tablet) {
@@ -67,6 +70,36 @@
         width: 100%;
         overflow: hidden;
         @include corner-radius(10px);
+      }
+    }
+  }
+
+  // Contain for button
+  .button-container {
+
+    // Fixes style bug on Chrome
+    background: white;
+    margin-top: -2px;
+    z-index: 1;
+    
+    // Center button
+    @include flex();
+    justify-content: center;
+
+    // Button
+    a {
+      margin-bottom: $desktop-margin;
+
+      // Tablet break
+      @include device-breakpoint($tablet) {
+        margin-left: $tablet-margin;
+        margin-right: $tablet-margin;
+      }
+
+      // Phone break
+      @include device-breakpoint($phone) {
+        margin-left: $mobile-margin;
+        margin-right: $mobile-margin;
       }
     }
   }
