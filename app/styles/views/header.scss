@@ -54,11 +54,12 @@ header {
         // Background image
         .image {
             flex: 1;
-            background-image: url('https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/profile.jpg?alt=media&token=d3d7a776-6b82-4274-a6bc-5b99f7e8c517');
-            background-size: 540px auto;
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/profile.png?alt=media&token=58d45dae-158a-42ad-a59c-122691f6767d');
+            background-size: 590px auto;
             background-position-x: right;
             background-position-y: bottom;
             background-repeat: no-repeat;
+            opacity: 0.92;
         }
 
         // Tablet break

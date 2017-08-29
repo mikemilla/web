@@ -10,6 +10,7 @@
     font-size: 0;
     margin-left: auto;
     margin-right: auto;
+    padding-top: $margin-desktop;
   
     // Desktop
     @include columns(3);
@@ -17,7 +18,6 @@
 
     // Tablet break
     @include device-breakpoint($desktop) {
-      padding-top: $margin-desktop;
       padding-left: $margin-desktop;
       padding-right: $margin-desktop;
     }
