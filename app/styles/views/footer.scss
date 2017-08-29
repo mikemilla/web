@@ -2,9 +2,9 @@ footer {
     background: $color-hero;
 
     // Variables
-    $desktop-margin: 64px;
-    $tablet-margin: 32px;
-    $mobile-margin: 24px;
+    $margin-desktop: 64px;
+    $margin-tablet: 32px;
+    $margin-phone: 24px;
 
     // List of networks
     ul {
@@ -14,20 +14,16 @@ footer {
         padding: 0;
         margin: 0;
         @include flex();
-
-        // Tablet break
-        @include device-breakpoint($desktop) {
-            padding: $desktop-margin;
-        }
+        padding: $margin-desktop;
 
         // Tablet break
         @include device-breakpoint($tablet) {
-            padding: $tablet-margin;
+            padding: $margin-tablet;
         }
 
         // Phone break
         @include device-breakpoint($phone) {
-            padding: $mobile-margin;
+            padding: $margin-phone;
         }
 
         // Network Item
@@ -36,7 +32,7 @@ footer {
             @include flex();
             align-items: center;
             justify-content: center;
-            margin-right: $desktop-margin;
+            margin-right: $margin-desktop;
 
             // Remove margin on last item
             &:last-child {
@@ -45,22 +41,22 @@ footer {
 
             // Tablet break
             @include device-breakpoint($tablet) {
-                margin-right: $tablet-margin;
+                margin-right: $margin-tablet;
                 &:last-child {
                     &:after {
                         content: '';
-                        width: $tablet-margin;
+                        width: $margin-tablet;
                     }
                 }
             }
 
             // Tablet break
             @include device-breakpoint($phone) {
-                margin-right: $mobile-margin;
+                margin-right: $margin-phone;
                 &:last-child {
                     &:after {
                         content: '';
-                        width: $mobile-margin;
+                        width: $margin-phone;
                     }
                 }
             }

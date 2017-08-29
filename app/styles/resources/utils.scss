@@ -40,3 +40,18 @@
 @mixin border() {
   border: solid 2px $color-border;
 }
+
+// Set the style for a button with a color
+@mixin action-style($color) {
+  color: $color-font;
+  border-color: $color-border;
+  &:hover {
+    border-color: $color-border;
+    background: $color;
+    color: white;
+  }
+  &:active {
+    background: darken($color, 10%);
+    color: white;
+  }
+}

@@ -1,11 +1,5 @@
 .grid {
   background: white;
-
-  // Variables
-  $desktop-margin: 64px;
-  $tablet-margin: 32px;
-  $mobile-margin: 24px;
-
   @include flex;
   flex-direction: column;
 
@@ -19,37 +13,37 @@
   
     // Desktop
     @include columns(3);
-    @include column-gap($desktop-margin);
-    padding-top: $desktop-margin;
+    @include column-gap($margin-desktop);
 
     // Tablet break
     @include device-breakpoint($desktop) {
-      padding-left: $desktop-margin;
-      padding-right: $desktop-margin;
+      padding-top: $margin-desktop;
+      padding-left: $margin-desktop;
+      padding-right: $margin-desktop;
     }
 
     // Tablet break
     @include device-breakpoint($tablet) {
       @include columns(2);
-      @include column-gap($tablet-margin);
-      padding-top: $tablet-margin;
-      padding-left: $tablet-margin;
-      padding-right: $tablet-margin;
+      @include column-gap($margin-tablet);
+      padding-top: $margin-tablet;
+      padding-left: $margin-tablet;
+      padding-right: $margin-tablet;
     }
 
     // Phone break
     @include device-breakpoint($phone) {
-      @include column-gap($mobile-margin);
-      padding-top: $mobile-margin;
-      padding-left: $mobile-margin;
-      padding-right: $mobile-margin;
+      @include column-gap($margin-phone);
+      padding-top: $margin-phone;
+      padding-left: $margin-phone;
+      padding-right: $margin-phone;
     }
   
     li {
       width: 100%;
       overflow: hidden;
       display: inline-block;
-      margin-bottom: $desktop-margin;
+      margin-bottom: $margin-desktop;
       background: $color-border;
       @include shadow-border();
       @include corner-radius(10px);
@@ -57,12 +51,12 @@
 
       // Tablet break
       @include device-breakpoint($tablet) {
-        margin-bottom: $tablet-margin;
+        margin-bottom: $margin-tablet;
       }
 
       // Phone break
       @include device-breakpoint($phone) {
-        margin-bottom: $mobile-margin;
+        margin-bottom: $margin-phone;
       }
   
       // Showcased piece
@@ -88,19 +82,19 @@
 
     // Button
     a {
-      margin-bottom: $desktop-margin;
+      margin-bottom: $margin-desktop;
 
       // Tablet break
       @include device-breakpoint($tablet) {
         width: 100%;
-        margin-left: $tablet-margin;
-        margin-right: $tablet-margin;
+        margin-left: $margin-tablet;
+        margin-right: $margin-tablet;
       }
 
       // Phone break
       @include device-breakpoint($phone) {
-        margin-left: $mobile-margin;
-        margin-right: $mobile-margin;
+        margin-left: $margin-phone;
+        margin-right: $margin-phone;
       }
     }
   }
