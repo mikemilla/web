@@ -8,68 +8,62 @@ footer {
 
     // List of networks
     ul {
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
         list-style-type: none;
         padding: 0;
         margin: 0;
-        padding-top: $desktop-margin;
-        padding-bottom: $desktop-margin;
         @include flex();
 
         // Tablet break
         @include device-breakpoint($desktop) {
-            padding-left: $desktop-margin;
-            padding-right: $desktop-margin;
+            padding: $desktop-margin;
         }
 
         // Tablet break
         @include device-breakpoint($tablet) {
-            padding-left: $tablet-margin;
-            padding-right: $tablet-margin;
+            padding: $tablet-margin;
         }
 
         // Phone break
         @include device-breakpoint($phone) {
-            padding-left: $mobile-margin;
-            padding-right: $mobile-margin;
+            padding: $mobile-margin;
         }
 
         // Network Item
         li {
             flex: 1;
-            // height: 56px;
             @include flex();
             align-items: center;
             justify-content: center;
             margin-right: $desktop-margin;
-            // @include corner-radius(10px);
-            // overflow: hidden;
 
             // Remove margin on last item
             &:last-child {
                 margin-right: 0px;
             }
 
-            // &:hover {
-            //     background: red;
-            //     -webkit-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.125);
-            //     -moz-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.125);
-            //     box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.125);
-            // }
+            // Tablet break
+            @include device-breakpoint($tablet) {
+                margin-right: $tablet-margin;
+                &:last-child {
+                    &:after {
+                        content: '';
+                        width: $tablet-margin;
+                    }
+                }
+            }
 
-            // &:active {
-            //     background: blue;
-            // }
-
-            // // Link
-            // a {
-            //     flex: 1;
-            //     @include flex();
-            //     height: 100%;
-            //     align-items: center;
-            //     justify-content: center;
-            //     text-decoration: none;
-            //     color: black;
-            // }
+            // Tablet break
+            @include device-breakpoint($phone) {
+                margin-right: $mobile-margin;
+                &:last-child {
+                    &:after {
+                        content: '';
+                        width: $mobile-margin;
+                    }
+                }
+            }
         }
     }
 }

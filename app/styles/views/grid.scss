@@ -92,6 +92,7 @@
 
       // Tablet break
       @include device-breakpoint($tablet) {
+        width: 100%;
         margin-left: $tablet-margin;
         margin-right: $tablet-margin;
       }
