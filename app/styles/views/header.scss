@@ -1,10 +1,12 @@
 header {
-    height: 85vh;
-    background: $color-hero;
+    background: $color-header;
 
-    // Tablet break
-    @include device-breakpoint($tablet) {
-        height: auto;
+    // Styles when view is shown
+    &.shown {
+        height: 85vh;
+        @include device-breakpoint($tablet) {
+            height: auto;
+        }
     }
 
     // Keyline container
@@ -59,7 +61,6 @@ header {
             background-position-x: right;
             background-position-y: bottom;
             background-repeat: no-repeat;
-            opacity: 0.92;
         }
 
         // Tablet break

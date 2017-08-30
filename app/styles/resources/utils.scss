@@ -29,16 +29,9 @@
   -webkit-border-radius: $radius $radius $radius $radius;
 }
 
-// Adds border as shadow
-@mixin shadow-border() {
-  -webkit-box-shadow: 0px 0px 0px 2px $color-border;
-  -moz-box-shadow: 0px 0px 0px 2px $color-border;
-  box-shadow: 0px 0px 0px 2px $color-border;
-}
-
 // Adds border as... border
-@mixin border() {
-  border: solid 2px $color-border;
+@mixin border($color) {
+  border: solid 2px $color;
 }
 
 // Set the style for a button with a color
@@ -54,4 +47,19 @@
     background: darken($color, 10%);
     color: white;
   }
+}
+
+// Scale a view
+@mixin transition-ease-in-out($duration) {
+  -webkit-transition: all $duration cubic-bezier(0.4, 0.0, 0.0, 1.000); 
+  -moz-transition: all $duration cubic-bezier(0.4, 0.0, 0.0, 1.000); 
+  -o-transition: all $duration cubic-bezier(0.4, 0.0, 0.0, 1.000); 
+  transition: all $duration cubic-bezier(0.4, 0.0, 0.0, 1.000);
+}
+
+// Scale a view
+@mixin scale($scale) {
+  -ms-transform: scale($scale);
+  -webkit-transform: scale($scale);
+  transform: scale($scale);
 }

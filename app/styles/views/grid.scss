@@ -44,8 +44,8 @@
       overflow: hidden;
       display: inline-block;
       margin-bottom: $margin-desktop;
-      background: $color-border;
-      @include shadow-border();
+      background: $color-border-solid;
+      @include border($color-border-solid);
       @include corner-radius(10px);
       overflow: hidden;
 
@@ -70,10 +70,6 @@
 
   // Contain for button
   .button-container {
-
-    // Fixes style bug on Chrome
-    background: white;
-    margin-top: -2px;
     z-index: 1;
     
     // Center button
