@@ -1,0 +1,21 @@
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 32px;
+    width: 40px;
+    overflow: hidden;
+    z-index: 2;
+
+    // Logo in container
+    .logo {
+        height: 100%;
+        width: 100%;
+        background-image: url('/images/icon_logo.svg');
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+    }
+}

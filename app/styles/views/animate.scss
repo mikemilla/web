@@ -1,7 +1,7 @@
 // Background of app
 body {
   background: $color-header;
-  opacity: 0;
+  // opacity: 0;
 }
   
 // Header Section
@@ -32,5 +32,12 @@ header {
         margin-top: 0px;
       }
     }
+  }
+}
+
+// Loading Logo
+.loading {
+  .logo {
+    @include transition-ease-in-out(240ms);
   }
 }

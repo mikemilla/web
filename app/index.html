@@ -33,6 +33,10 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+  <div class="loading">
+    <div class="logo"></div>
+  </div>
+
   <!-- Hero Area -->
   <header>
     <div class="keylines">
@@ -62,12 +66,10 @@
         />
       </li>
       <li>
-        <!-- <video class="work" autoplay muted loop playsinline poster="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/prediction-ui.png?alt=media&token=22ac3ccc-4c20-4b10-91e0-4e46c83370dd">
-          <source src="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/huntwise.mov?alt=media&token=5fc71798-af94-4acc-85b5-05b310946fed"> Your browser does not support HTML5 video.
-        </video> -->
-        <img class="work" src="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/about-ui.png?alt=media&token=3d783460-6ac3-4cea-abc8-2092968a0a99"
-        />
-      </li>
+        <video class="work" autoplay muted loop playsinline preload="none" poster="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/prediction-ui.png?alt=media&token=22ac3ccc-4c20-4b10-91e0-4e46c83370dd">
+          <source src="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/huntwise.mov?alt=media&token=5fc71798-af94-4acc-85b5-05b310946fed">
+        </video>
+      <li/>
       <li>
         <img class="work" src="https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/about-ui.png?alt=media&token=3d783460-6ac3-4cea-abc8-2092968a0a99"
         />
@@ -117,14 +119,12 @@
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
-    (function (b, o, i, l, e, r) {
-      b.GoogleAnalyticsObject = l; b[l] || (b[l] =
-        function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
-      e = o.createElement(i); r = o.getElementsByTagName(i)[0];
-      e.src = 'https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-51859037-1', 'auto');
+    ga('send', 'pageview');
   </script>
 
   <!-- build:js scripts/vendor.js -->

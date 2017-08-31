@@ -12,8 +12,8 @@ html, body {
   font-family: $primary-font;
   color: $color-font;
   -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
   -webkit-touch-callout: none;
+  @include select(none);
 }
 
 // Keylines
@@ -107,4 +107,5 @@ html, body {
 @import "views/header";
 @import "views/grid";
 @import "views/footer";
+@import "views/loading";
 @import "views/animate";

@@ -1,3 +1,10 @@
+// Sets selection for text and things
+@mixin select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
 
 // Setting columns
 @mixin columns($count) {
