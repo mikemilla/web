@@ -61,17 +61,16 @@ $(document).ready(function (event) {
 
     // Download profile image
     const profileImageURL = 'https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/profile.png?alt=media&token=58d45dae-158a-42ad-a59c-122691f6767d';
-    const profileImage = $("<img />").attr('src', profileImageURL).on('load', function () {
+    const profileImage = $('<img />').attr('src', profileImageURL).on('load', function () {
 
         // Handle downloaded image
-        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-            console.log("Error downloading profile image");
+        if (!this.complete || typeof this.naturalWidth == 'undefined' || this.naturalWidth == 0) {
+            console.log('Error downloading profile image');
+            showContentView();
         } else {
             headerImage.append(profileImage);
+            showContentView();
         }
-
-        // Show content view
-        showContentView();
     });
 
 });
