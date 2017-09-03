@@ -44,6 +44,7 @@
     }
   },
   "dependencies": {
-    "gulp-shell": "^0.6.3"
+    "gulp-shell": "^0.6.3",
+    "is-in-viewport": "^3.0.0"
   }
 }

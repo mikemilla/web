@@ -45,6 +45,8 @@
 @mixin action-style($color) {
   color: $color-font;
   border-color: $color-border;
+
+  // Desktop styles
   &:hover {
     border-color: $color-border;
     background: $color;
@@ -53,6 +55,19 @@
   &:active {
     background: darken($color, 10%);
     color: white;
+  }
+
+  // Touches on mobile
+  @include device-breakpoint($tablet) {
+    &:hover {
+      border-color: $color-border;
+      background: transparent;
+      color: $color-font;
+    }
+    &:active {
+      background: $color;
+      color: white;
+    }
   }
 }
 
@@ -69,4 +84,11 @@
   -ms-transform: scale($scale);
   -webkit-transform: scale($scale);
   transform: scale($scale);
+}
+
+// Shadow
+@mixin shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
 }

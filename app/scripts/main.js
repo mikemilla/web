@@ -1,3 +1,4 @@
+// Document Ready
 $(document).ready(function (event) {
 
     // Variables
@@ -60,7 +61,7 @@ $(document).ready(function (event) {
     };
 
     // Download profile image
-    const profileImageURL = 'https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/profile.png?alt=media&token=58d45dae-158a-42ad-a59c-122691f6767d';
+    const profileImageURL = 'https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-profile.png?alt=media&token=ef7ce39a-bcc5-4d35-9deb-0fe478abd372';
     const profileImage = $('<img />').attr('src', profileImageURL).on('load', function () {
 
         // Handle downloaded image
@@ -73,4 +74,15 @@ $(document).ready(function (event) {
         }
     });
 
+});
+
+// Listen to scroll events
+$(window).scroll(function () {
+    $('video').each(function () {
+        if ($(this).visible(true)) {
+            $(this)[0].play();
+        } else {
+            $(this)[0].pause();
+        }
+    })
 });
