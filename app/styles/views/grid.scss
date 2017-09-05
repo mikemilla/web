@@ -48,6 +48,7 @@
       @include border($color-border-solid);
       @include corner-radius(10px);
       overflow: hidden;
+      cursor: pointer;
 
       // Tablet break
       @include device-breakpoint($tablet) {

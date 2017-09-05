@@ -82,6 +82,47 @@ $(document).ready(function (event) {
         videos.push(element);
     });
 
+    // Handle grid item clicks
+    $('.grid ul li').click(function () {
+
+        // Lock scroll
+        // view.css({
+        //     overflow: 'hidden',
+        //     height: '100%'
+        // });
+
+        const currentItem = this.children[0];
+        console.log(currentItem)
+
+        var isVideo = $(currentItem).is('video');
+
+        if (isVideo) {
+            currentItem.pause();
+        }
+
+        $('body').append('<div id="detailed-view" class="detailed-view"></div>');
+
+
+        const newItem = $(currentItem).clone();
+
+        if (isVideo) {
+            newItem[0].currentTime = currentItem.currentTime;
+        }
+
+        newItem.appendTo('#detailed-view');
+
+        $('#detailed-view').click(function (event) {
+
+            if (isVideo) {
+                currentItem.currentTime = newItem[0].currentTime
+                currentItem.play();
+            }
+
+            $('#detailed-view').remove();
+        });
+        
+    });
+
 });
 
 // Listen to scroll events
@@ -92,11 +133,11 @@ $(window).scroll(function () {
         const videoAtIndex = $(videos[i])
         videoAtIndex.visibleHeight() > videoAtIndex.height() / 2 ? videos[i].play() : videos[i].pause();
     }
-    
+
 });
 
 // Determines how much of a view is in the viewport (pixels)
-$.fn.visibleHeight = function() {
+$.fn.visibleHeight = function () {
     var elBottom, elTop, scrollBot, scrollTop, visibleBottom, visibleTop, percentageInView;
     scrollTop = $(window).scrollTop();
     scrollBot = scrollTop + $(window).height();
