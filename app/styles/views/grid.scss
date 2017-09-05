@@ -49,6 +49,20 @@
       @include corner-radius(10px);
       overflow: hidden;
       cursor: pointer;
+      @include transition-ease-in-out(200ms);
+
+      // Desktop hover
+      &:hover {
+        @include shadow(0px 4px 12px 0px rgba(0,0,0,0.125));
+      }
+
+      // Mobile Touches
+      @include device-breakpoint($tablet) {
+        @include transition-ease-in-out(0ms);
+        &:hover {
+          @include shadow(none);
+        }
+      }
 
       // Tablet break
       @include device-breakpoint($tablet) {
