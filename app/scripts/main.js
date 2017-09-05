@@ -1,3 +1,6 @@
+// Global variables
+var videos = [];
+
 // Document Ready
 $(document).ready(function (event) {
 
@@ -74,15 +77,32 @@ $(document).ready(function (event) {
         }
     });
 
+    // Get list of all video elements
+    $('video').each(function (index, element) {
+        videos.push(element);
+    });
+
 });
 
 // Listen to scroll events
 $(window).scroll(function () {
-    $('video').each(function () {
-        if ($(this).visible(true)) {
-            $(this)[0].play();
-        } else {
-            $(this)[0].pause();
-        }
-    })
+
+    // Pauses or plays video based on the users scroll position
+    for (var i = 0; i < videos.length; i++) {
+        const videoAtIndex = $(videos[i])
+        videoAtIndex.visibleHeight() > videoAtIndex.height() / 2 ? videos[i].play() : videos[i].pause();
+    }
+    
 });
+
+// Determines how much of a view is in the viewport (pixels)
+$.fn.visibleHeight = function() {
+    var elBottom, elTop, scrollBot, scrollTop, visibleBottom, visibleTop, percentageInView;
+    scrollTop = $(window).scrollTop();
+    scrollBot = scrollTop + $(window).height();
+    elTop = this.offset().top;
+    elBottom = elTop + this.outerHeight();
+    visibleTop = elTop < scrollTop ? scrollTop : elTop;
+    visibleBottom = elBottom > scrollBot ? scrollBot : elBottom;
+    return visibleBottom - visibleTop > 0 ? visibleBottom - visibleTop : 0;
+}
