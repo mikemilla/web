@@ -7,12 +7,12 @@
     z-index: 1;
 
     .background {
-        @include transition-ease-in-out(400ms);
-        opacity: 0;
-        background: rgba(black, 0.87);
+        @include transition-ease-in-out(280ms);
+        background: rgba(black, 0.92);
         position: absolute;
         height: 100%;
         width: 100%;
+        opacity: 0;
     }
 
     .media {
@@ -46,7 +46,9 @@
     .description {
         flex: 1;
         background: white;
-        max-width: 35%;
+        max-width: 0%;
+        z-index: 0;
+        @include transition-ease-in-out(250ms);
 
         // display: none;
 

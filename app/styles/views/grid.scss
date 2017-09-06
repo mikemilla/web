@@ -76,7 +76,7 @@
 
       &.hidden {
         @include transition-ease-in-out(0ms);
-        opacity: 0;
+        visibility: hidden;
       }
   
       // Showcased piece

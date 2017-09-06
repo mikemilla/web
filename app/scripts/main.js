@@ -96,6 +96,9 @@ $(document).ready(function (event) {
             // Handle grid item clicks
             $('.grid ul li').click(function () {
 
+                // Get portfolio item for selected item
+                const portfolioItemAtIndex = portfolio[$(this).index()];
+
                 // Lock scroll
                 view.css('overflow', 'hidden');
 
@@ -120,7 +123,7 @@ $(document).ready(function (event) {
 
 
                 if (isVideo) {
-                    newItem[0].currentTime = currentItem.currentTime;
+                    newItem[0].currentTime = 0;
                     newItem[0].play();
                 }
 
@@ -141,39 +144,39 @@ $(document).ready(function (event) {
                     newItem.addClass('center');
                 }, 0);
 
+                $('.description').text(portfolioItemAtIndex.description);
+
+                $('.description').css('max-width', '30%');
+
                 $('.detailed-view').click(function (event) {
 
                     newItem.removeClass('center');
 
-                    if (isVideo) {
-                        newItem[0].pause();
-                        currentItem.currentTime = newItem[0].currentTime
-                        // currentItem.play();
-                    }
+                    $('.description').css('max-width', '0%');
 
-                    // Listen to transition
-                    newItem.one(transitionValues, function (event) {
-                        newItem.unbind(transitionValues);
+                    // if (isVideo) {
+                    //     newItem[0].pause();
+                    //     currentItem.currentTime = newItem[0].currentTime
+                    //     // currentItem.play();
+                    // }
 
-                        // Change me
-                        listItem.removeClass('hidden');
-
-                        // Remove detail view
-                        $('.detailed-view').remove();
-
-                        // Unlock scroll
-                        view.css('overflow', 'visible');
-                    });
-
-                    $('.background').css('opacity', 1);
+                    $('.background').css('opacity', 0);
                     $('.background').one(transitionValues, function (event) {
                         $('.background').unbind(transitionValues);
 
                         // Change me
                         listItem.removeClass('hidden');
+                    });
+
+                    // Listen to transition
+                    newItem.one(transitionValues, function (event) {
+                        newItem.unbind(transitionValues);
 
                         // Remove detail view
                         $('.detailed-view').remove();
+
+                        // Change me
+                        listItem.removeClass('hidden');
 
                         // Unlock scroll
                         view.css('overflow', 'visible');
