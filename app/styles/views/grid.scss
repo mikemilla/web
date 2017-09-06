@@ -73,6 +73,11 @@
       @include device-breakpoint($phone) {
         margin-bottom: $margin-phone;
       }
+
+      &.hidden {
+        @include transition-ease-in-out(0ms);
+        opacity: 0;
+      }
   
       // Showcased piece
       .work {

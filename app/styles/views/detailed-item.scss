@@ -1,11 +1,58 @@
 .detailed-view {
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    background: red;
     position: fixed;
     top: 0px;
+    @include flex;
+    z-index: 1;
 
-    video {
-        height: 200px;
+    .background {
+        @include transition-ease-in-out(400ms);
+        opacity: 0;
+        background: rgba(black, 0.87);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    .media {
+        flex: 1;
+        position: relative;
+
+        // Styles for work item
+        .work {
+            @include border($color-border);
+            @include transition-spring(300ms);
+            @include corner-radius(10px);
+            position: absolute;
+    
+            // Centers the element
+            &.center {
+                margin: 0;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%);
+                max-height: 100%;
+                width: auto !important;
+
+                @include device-breakpoint($phone) {
+                    height: auto !important;
+                    width: 80% !important;
+                }
+            }
+        }
+    }
+
+    .description {
+        flex: 1;
+        background: white;
+        max-width: 35%;
+
+        // display: none;
+
+        // Tablet break
+        @include device-breakpoint($tablet) {
+            display: none;
+        }
     }
   }
