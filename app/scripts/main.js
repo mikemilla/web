@@ -2,18 +2,24 @@
 var videos = [];
 var portfolio = [];
 
+// Global constants
+const transitionValues = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+const domInsertionValue = 'DOMNodeInserted';
+const cssValue = 'stylechanged';
+const view = $('html, body');
+const body = $('body');
+const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
 // Document Ready
 $(document).ready(function (event) {
 
     // Variables
     const jsonPath = './data/portfolio.json';
     const primaryColor = '#108FFF';
-    const transitionValues = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+    const videoType = 'video';
 
     // Elements
     const logo = $('.loading .logo');
-    const body = $('body');
-    const view = $('html, body');
     const header = $('header');
     const headerImage = $('header .image');
     const headerTitles = $('header .titles');
@@ -82,107 +88,178 @@ $(document).ready(function (event) {
                 const portfolioItemAtIndex = portfolio[i];
 
                 // Check media type and add correct list item
-                if (portfolioItemAtIndex.media.type === "video") {
-                    gridList.append('<li><video class="work" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
-                    // gridList.append('<li><video class="work" autoplay muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
+                var chromeClass = isChrome ? 'chrome' : '';
+                if (portfolioItemAtIndex.media.type === videoType) {
+                    var test = 'yes';
+                    gridList.append('<li class="' + chromeClass + '"><video class="work ' + chromeClass + '" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
                 } else {
-                    gridList.append('<li><img class="work" src="' + portfolioItemAtIndex.media.src + '"/></li>');
+                    gridList.append('<li class="' + chromeClass + '"><img class="work ' + chromeClass + '" src="' + portfolioItemAtIndex.media.src + '"/></li>');
                 }
             }
 
             // Show the content view
             showContentView();
 
-            // Handle grid item clicks
-            $('.grid ul li').click(function () {
+            // Handle list item clicks
+            const listItems = $('.grid ul li');
+            listItems.click(function (event) {
+
+                // Prevents strange reloading error
+                // This is why native mobile development is better...
+                event.stopImmediatePropagation();
+
+                // List item clicks
+                const listItem = $(this);
+
+                // Current media for selected list item
+                const selectedMedia = this.children[0];
 
                 // Get portfolio item for selected item
-                const portfolioItemAtIndex = portfolio[$(this).index()];
+                const portfolioItemAtIndex = portfolio[listItem.index()];
 
                 // Lock scroll
                 view.css('overflow', 'hidden');
 
-                const listItem = $(this);
+                // Clone the current media
+                const media = $(selectedMedia).clone();
 
-                const currentItem = this.children[0];
-
-                const newItem = $(currentItem).clone();
-                listItem.addClass('hidden');
-
-                // console.log(currentItem.getBoundingClientRect().width);
-                // console.log($(currentItem).offset().top - $(document).scrollTop())
-
-                var isVideo = $(currentItem).is('video');
-
-                if (isVideo) {
-                    currentItem.pause();
-                }
-
-                // Create the detail item
+                // Create the detail item container
+                // This is the view that holds the transitioned element
                 body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"></div></div>');
 
+                // Is current item a video?
+                var isVideo = portfolioItemAtIndex.media.type === videoType;
 
+                // If type is video
+                // Start playing at 0 sec
                 if (isVideo) {
-                    newItem[0].currentTime = 0;
-                    newItem[0].play();
+                    media[0].currentTime = 0;
+                    media[0].play();
                 }
 
-                // Set initial positions
-                newItem.css('width', currentItem.getBoundingClientRect().width);
-                newItem.css('height', currentItem.getBoundingClientRect().height);
-                newItem.css('top', $(currentItem).offset().top - $(document).scrollTop());
-                newItem.css('left', $(currentItem).offset().left);
-                newItem.css('right', $(currentItem).offset().right);
+                // Listen to css changes of shared element
+                media.on(cssValue, function (event) {
 
-                // Add content to media container
-                newItem.appendTo('.media');
+                    // Listen to dom insertion
+                    const mediaContainerRef = '.media';
+                    $(mediaContainerRef).on(domInsertionValue, function (event) {
 
-                $('.background').css('opacity', 1);
+                        // Items have been added
+                        if ($(event.target).hasClass('work')) {
 
-                // Animate view to center of container
-                setTimeout(function () {
-                    newItem.addClass('center');
-                }, 0);
+                            // Animate background color
+                            $('.background').css('opacity', 1);
 
-                $('.description').text(portfolioItemAtIndex.description);
+                            // Animate view to center of container
+                            // Done with time out to give time to add element to DOM
+                            setTimeout(function () {
 
-                $('.description').css('max-width', '30%');
+                                // Check for chrome
+                                // Changes how we handle the animation
+                                if (isChrome) {
+                                    listItem.addClass('hidden');
+                                    media.addClass('center');
+                                } else {
+                                    listItem.addClass('hidden');
+                                }
 
-                $('.detailed-view').click(function (event) {
+                            }, isChrome ? 0 : 80);
 
-                    newItem.removeClass('center');
+                            // Animation to a coord when not using chrome
+                            if (!isChrome) {
+                                media.delay(80).animate({
+                                    top: (window.innerHeight - selectedMedia.getBoundingClientRect().height) / 2,
+                                    left: (((window.innerWidth / 10) * 7) - selectedMedia.getBoundingClientRect().width) / 2
+                                },
+                                    {
+                                        duration: 250,
+                                        easing: 'swing'
+                                    });
+                            }
 
-                    $('.description').css('max-width', '0%');
+                            // Detailed view element references  
+                            const detailedView = $('.detailed-view');
+                            const background = $('.background');
+                            const description = $('.description');
 
-                    // if (isVideo) {
-                    //     newItem[0].pause();
-                    //     currentItem.currentTime = newItem[0].currentTime
-                    //     // currentItem.play();
-                    // }
+                            // Animate elements into view
+                            background.css('opacity', 1);
+                            description.css('max-width', '30%');
 
-                    $('.background').css('opacity', 0);
-                    $('.background').one(transitionValues, function (event) {
-                        $('.background').unbind(transitionValues);
+                            // CHANGE ME
+                            description.text(portfolioItemAtIndex.description);
 
-                        // Change me
-                        listItem.removeClass('hidden');
+                            // Dismiss detailed view
+                            detailedView.click(function (event) {
+
+                                // Animate shared element reseting
+                                if (isChrome) {
+                                    media.removeClass('center');
+                                }
+                                description.css('max-width', '0%');
+                                background.css('opacity', 0);
+
+                                // Listen to background animation
+                                background.one(transitionValues, function (event) {
+                                    background.unbind(transitionValues);
+
+                                    // Show original list item again
+                                    listItem.removeClass('hidden');
+                                });
+
+                                // Listen to transition shared element
+                                media.one(transitionValues, function (event) {
+                                    media.unbind(transitionValues);
+
+                                    // Remove detail view
+                                    detailedView.remove();
+
+                                    // Show original list item again (fallback)
+                                    listItem.removeClass('hidden');
+
+                                    // Unlock scroll
+                                    view.css('overflow', 'visible');
+                                });
+
+                                // Animate out if not chrome
+                                if (!isChrome) {
+                                    setTimeout(function () {
+                                        listItem.removeClass('hidden');
+                                    }, 249);
+
+                                    media.animate({
+                                        top: $(selectedMedia).offset().top - $(document).scrollTop(),
+                                        left: $(selectedMedia).offset().left
+                                    },
+                                        {
+                                            duration: 250,
+                                            easing: 'swing',
+                                            complete: function () {
+
+                                                // Remove detail view
+                                                detailedView.remove();
+
+                                                // Unlock scroll
+                                                view.css('overflow', 'visible');
+                                            }
+                                        });
+                                }
+                            });
+                        }
                     });
 
-                    // Listen to transition
-                    newItem.one(transitionValues, function (event) {
-                        newItem.unbind(transitionValues);
-
-                        // Remove detail view
-                        $('.detailed-view').remove();
-
-                        // Change me
-                        listItem.removeClass('hidden');
-
-                        // Unlock scroll
-                        view.css('overflow', 'visible');
-                    });
+                    // Add shared element to media container
+                    media.appendTo(mediaContainerRef);
                 });
 
+                // Set initial positions
+                // This is where the shared element transition places the selected element
+                media.cssWithListener({
+                    width: selectedMedia.getBoundingClientRect().width,
+                    height: selectedMedia.getBoundingClientRect().height,
+                    top: $(selectedMedia).offset().top - $(document).scrollTop(),
+                    left: $(selectedMedia).offset().left
+                });
             });
         });
     }
@@ -201,32 +278,14 @@ $(document).ready(function (event) {
         }
     });
 
-    // Get list of all video elements
-    $('video').each(function (index, element) {
-        videos.push(element);
-    });
-
 });
 
-// Listen to scroll events
-$(window).scroll(function () {
-
-    // Pauses or plays video based on the users scroll position
-    for (var i = 0; i < videos.length; i++) {
-        const videoAtIndex = $(videos[i])
-        videoAtIndex.visibleHeight() > videoAtIndex.height() / 2 ? videos[i].play() : videos[i].pause();
+// Extensions for listening to css changes
+(function () {
+    orig = $.fn.css;
+    $.fn.cssWithListener = function () {
+        var result = orig.apply(this, arguments);
+        $(this).trigger(cssValue);
+        return result;
     }
-
-});
-
-// Determines how much of a view is in the viewport (pixels)
-$.fn.visibleHeight = function () {
-    var elBottom, elTop, scrollBot, scrollTop, visibleBottom, visibleTop, percentageInView;
-    scrollTop = $(window).scrollTop();
-    scrollBot = scrollTop + $(window).height();
-    elTop = this.offset().top;
-    elBottom = elTop + this.outerHeight();
-    visibleTop = elTop < scrollTop ? scrollTop : elTop;
-    visibleBottom = elBottom > scrollBot ? scrollBot : elBottom;
-    return visibleBottom - visibleTop > 0 ? visibleBottom - visibleTop : 0;
-}
+})();

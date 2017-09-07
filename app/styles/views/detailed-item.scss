@@ -6,8 +6,9 @@
     @include flex;
     z-index: 1;
 
+    // Background of view
     .background {
-        @include transition-ease-in-out(280ms);
+        @include transition-ease-in-out(260ms);
         background: rgba(black, 0.92);
         position: absolute;
         height: 100%;
@@ -15,6 +16,7 @@
         opacity: 0;
     }
 
+    // Media being shown
     .media {
         flex: 1;
         position: relative;
@@ -22,9 +24,13 @@
         // Styles for work item
         .work {
             @include border($color-border);
-            @include transition-spring(300ms);
             @include corner-radius(10px);
             position: absolute;
+
+            // Chrome exlusive animation
+            &.chrome {
+                @include transition-spring(300ms);
+            }
     
             // Centers the element
             &.center {
@@ -32,6 +38,7 @@
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%);
+
                 max-height: 100%;
                 width: auto !important;
 
@@ -43,6 +50,7 @@
         }
     }
 
+    // Description area
     .description {
         flex: 1;
         background: white;
