@@ -12,9 +12,9 @@ const body = $('body');
 const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 // On Resize
-$(window).resize(function() {
+$(window).resize(function () {
     isMobile = $(window).width() <= 1048;
- });
+});
 
 // Document Ready
 $(document).ready(function (event) {
@@ -109,8 +109,48 @@ $(document).ready(function (event) {
             // Show the content view
             showContentView();
 
-            // Handle list item clicks
+            // Handle list item interactions
             const listItems = $('.grid ul li');
+
+            // On Hover
+            listItems.mouseover(function () {
+
+                // Prevent clicking on mobile
+                // Kind of a bandaid
+                if (isMobile) {
+                    return;
+                }
+
+                // List item clicks
+                const listItem = $(this);
+
+                // Get media item
+                const media = listItem[0].children[0];
+                if ($(media).is(videoType)) {
+                    media.play();
+                }
+            });
+
+            // Off Hover
+            listItems.mouseout(function () {
+
+                // Prevent clicking on mobile
+                // Kind of a bandaid
+                if (isMobile) {
+                    return;
+                }
+
+                // List item clicks
+                const listItem = $(this);
+
+                // Get media item
+                const media = listItem[0].children[0];
+                if ($(media).is(videoType)) {
+                    media.pause();
+                }
+            });
+
+            // Clicks
             listItems.click(function (event) {
 
                 // Prevent clicking on mobile
@@ -148,11 +188,7 @@ $(document).ready(function (event) {
                 body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"></div></div>');
 
                 // Is current item a video?
-                var isVideo = portfolioItemAtIndex.media.type === videoType;
-
-                // If type is video
-                // Start playing at 0 sec
-                if (isVideo) {
+                if ($(media).is(videoType)) {
 
                     // Adds the auto play property to the video tag
                     // This is supported in safari, but video.play() isn't... 😤
