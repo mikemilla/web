@@ -88,7 +88,7 @@ $(document).ready(function (event) {
                 const portfolioItemAtIndex = portfolio[i];
 
                 // Check media type and add correct list item
-                var chromeClass = isChrome ? 'chrome' : '';
+                var chromeClass = isChrome ? 'chrome' : 'default';
                 if (portfolioItemAtIndex.media.type === videoType) {
                     var test = 'yes';
                     gridList.append('<li class="' + chromeClass + '"><video class="work ' + chromeClass + '" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
@@ -133,8 +133,10 @@ $(document).ready(function (event) {
                 // If type is video
                 // Start playing at 0 sec
                 if (isVideo) {
-                    media[0].currentTime = 0;
-                    media[0].play();
+                    
+                    // Adds the auto play property to the video tag
+                    // This is supported in safari, but video.play() isn't... 😤
+                    media.prop('autoplay', true);
                 }
 
                 // Listen to css changes of shared element
@@ -153,29 +155,11 @@ $(document).ready(function (event) {
                             // Animate view to center of container
                             // Done with time out to give time to add element to DOM
                             setTimeout(function () {
-
-                                // Check for chrome
-                                // Changes how we handle the animation
                                 if (isChrome) {
                                     listItem.addClass('hidden');
-                                    media.addClass('center');
-                                } else {
-                                    listItem.addClass('hidden');
                                 }
-
-                            }, isChrome ? 0 : 80);
-
-                            // Animation to a coord when not using chrome
-                            if (!isChrome) {
-                                media.delay(80).animate({
-                                    top: (window.innerHeight - selectedMedia.getBoundingClientRect().height) / 2,
-                                    left: (((window.innerWidth / 10) * 7) - selectedMedia.getBoundingClientRect().width) / 2
-                                },
-                                    {
-                                        duration: 250,
-                                        easing: 'swing'
-                                    });
-                            }
+                                media.addClass('center');
+                            }, 0);
 
                             // Detailed view element references  
                             const detailedView = $('.detailed-view');
@@ -193,9 +177,7 @@ $(document).ready(function (event) {
                             detailedView.click(function (event) {
 
                                 // Animate shared element reseting
-                                if (isChrome) {
-                                    media.removeClass('center');
-                                }
+                                media.removeClass('center');
                                 description.css('max-width', '0%');
                                 background.css('opacity', 0);
 
@@ -204,8 +186,23 @@ $(document).ready(function (event) {
                                     background.unbind(transitionValues);
 
                                     // Show original list item again
-                                    listItem.removeClass('hidden');
+                                    if (isChrome) {
+                                        listItem.removeClass('hidden');
+                                    }
                                 });
+
+                                // Handle fallback browser dismiss
+                                if (!isChrome) {
+                                    setTimeout(function () {
+
+                                        // Remove detail view
+                                        detailedView.remove();
+
+                                        // Unlock scroll
+                                        view.css('overflow', 'visible');
+
+                                    }, 310);
+                                }
 
                                 // Listen to transition shared element
                                 media.one(transitionValues, function (event) {
@@ -220,30 +217,6 @@ $(document).ready(function (event) {
                                     // Unlock scroll
                                     view.css('overflow', 'visible');
                                 });
-
-                                // Animate out if not chrome
-                                if (!isChrome) {
-                                    setTimeout(function () {
-                                        listItem.removeClass('hidden');
-                                    }, 249);
-
-                                    media.animate({
-                                        top: $(selectedMedia).offset().top - $(document).scrollTop(),
-                                        left: $(selectedMedia).offset().left
-                                    },
-                                        {
-                                            duration: 250,
-                                            easing: 'swing',
-                                            complete: function () {
-
-                                                // Remove detail view
-                                                detailedView.remove();
-
-                                                // Unlock scroll
-                                                view.css('overflow', 'visible');
-                                            }
-                                        });
-                                }
                             });
                         }
                     });

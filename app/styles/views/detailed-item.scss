@@ -8,7 +8,7 @@
 
     // Background of view
     .background {
-        @include transition-ease-in-out(260ms);
+        @include transition-ease-in-out(280ms);
         background: rgba(black, 0.92);
         position: absolute;
         height: 100%;
@@ -23,13 +23,17 @@
 
         // Styles for work item
         .work {
+            position: absolute;
             @include border($color-border);
             @include corner-radius(10px);
-            position: absolute;
+            @include transition-spring(300ms);
 
-            // Chrome exlusive animation
-            &.chrome {
-                @include transition-spring(300ms);
+            // Default class for initial load
+            // This is a fallback style used for anything but chrome
+            &.default {
+                top: 50% !important;
+                left: 0% !important;
+                transform: translate(-100%, -50%);
             }
     
             // Centers the element
