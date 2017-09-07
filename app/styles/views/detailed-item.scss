@@ -20,6 +20,7 @@
     .media {
         flex: 1;
         position: relative;
+        cursor: pointer;
 
         // Styles for work item
         .work {
@@ -27,6 +28,7 @@
             @include border($color-border);
             @include corner-radius(10px);
             @include transition-spring(300ms);
+            cursor: default;
 
             // Default class for initial load
             // This is a fallback style used for anything but chrome

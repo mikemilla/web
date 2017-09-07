@@ -33,6 +33,7 @@
 
     // Phone break
     @include device-breakpoint($phone) {
+      @include columns(1);
       @include column-gap($margin-phone);
       padding-top: $margin-phone;
       padding-left: $margin-phone;

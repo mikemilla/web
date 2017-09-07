@@ -1,6 +1,7 @@
 // Global variables
 var videos = [];
 var portfolio = [];
+var isMobile = false;
 
 // Global constants
 const transitionValues = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
@@ -10,8 +11,16 @@ const view = $('html, body');
 const body = $('body');
 const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
+// On Resize
+$(window).resize(function() {
+    isMobile = $(window).width() <= 1048;
+ });
+
 // Document Ready
 $(document).ready(function (event) {
+
+    // Check for mobile
+    isMobile = $(window).width() <= 1048;
 
     // Variables
     const jsonPath = './data/portfolio.json';
@@ -89,9 +98,9 @@ $(document).ready(function (event) {
 
                 // Check media type and add correct list item
                 var chromeClass = isChrome ? 'chrome' : 'default';
+                var autoplayClass = isMobile ? 'autoplay' : '';
                 if (portfolioItemAtIndex.media.type === videoType) {
-                    var test = 'yes';
-                    gridList.append('<li class="' + chromeClass + '"><video class="work ' + chromeClass + '" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
+                    gridList.append('<li class="' + chromeClass + '"><video class="work ' + chromeClass + '" ' + autoplayClass + ' muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
                 } else {
                     gridList.append('<li class="' + chromeClass + '"><img class="work ' + chromeClass + '" src="' + portfolioItemAtIndex.media.src + '"/></li>');
                 }
@@ -103,6 +112,12 @@ $(document).ready(function (event) {
             // Handle list item clicks
             const listItems = $('.grid ul li');
             listItems.click(function (event) {
+
+                // Prevent clicking on mobile
+                // Kind of a bandaid
+                if (isMobile) {
+                    return;
+                }
 
                 // Prevents strange reloading error
                 // This is why native mobile development is better...
@@ -123,6 +138,11 @@ $(document).ready(function (event) {
                 // Clone the current media
                 const media = $(selectedMedia).clone();
 
+                // Prevent click through
+                media.click(function (event) {
+                    event.stopPropagation();
+                });
+
                 // Create the detail item container
                 // This is the view that holds the transitioned element
                 body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"></div></div>');
@@ -133,7 +153,7 @@ $(document).ready(function (event) {
                 // If type is video
                 // Start playing at 0 sec
                 if (isVideo) {
-                    
+
                     // Adds the auto play property to the video tag
                     // This is supported in safari, but video.play() isn't... 😤
                     media.prop('autoplay', true);
@@ -174,7 +194,7 @@ $(document).ready(function (event) {
                             description.text(portfolioItemAtIndex.description);
 
                             // Dismiss detailed view
-                            detailedView.click(function (event) {
+                            $(mediaContainerRef).click(function (event) {
 
                                 // Animate shared element reseting
                                 media.removeClass('center');
