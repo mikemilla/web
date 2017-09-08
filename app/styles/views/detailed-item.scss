@@ -8,7 +8,7 @@
 
     // Background of view
     .background {
-        @include transition-ease-in-out(280ms);
+        @include transition-ease-in-out(260ms);
         background: rgba(black, 0.92);
         position: absolute;
         height: 100%;
