@@ -20,7 +20,7 @@ launchSharedElement = function (element) {
     const portfolioItemAtIndex = portfolio[listItem.index()];
 
     // Set the url hash
-    window.history.pushState('obj', 'newtitle', portfolioItemAtIndex.title);
+    window.history.pushState('obj', 'newtitle', portfolioItemAtIndex.slug);
 
     // Lock scroll
     view.css('overflow', 'hidden');
@@ -35,7 +35,7 @@ launchSharedElement = function (element) {
 
     // Create the detail item container
     // This is the view that holds the transitioned element
-    body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"></div></div>');
+    body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"><div class="content"></div></div></div>');
 
     // Is current item a video?
     if ($(media).is(videoType)) {
@@ -74,10 +74,25 @@ launchSharedElement = function (element) {
 
                 // Animate elements into view
                 background.css('opacity', 1);
-                description.css('max-width', '30%');
+                description.css('margin-right', 0);
 
-                // CHANGE ME
-                description.text(portfolioItemAtIndex.description);
+                // Set description info
+                const content = $('.content');
+
+                // Add details to the view
+                if (portfolioItemAtIndex.title) {
+                    content.append('<h1>' + portfolioItemAtIndex.title + '</h2>');
+                }
+                if (portfolioItemAtIndex.role) {
+                    content.append('<h2>' + portfolioItemAtIndex.role + '</h2>')
+                }
+                if (portfolioItemAtIndex.description) {
+                    content.append('<div class="break"></div>');
+                    content.append('<p>' + portfolioItemAtIndex.description + '</p>')
+                }
+                if (portfolioItemAtIndex.url) {
+                    content.append('<a class="action-button" target="_blank" href="' + portfolioItemAtIndex.url + '" type="send-message">' + portfolioItemAtIndex.action + '</a>')
+                }
 
                 // Dismiss detailed view
                 $(mediaContainerRef).click(function (event) {

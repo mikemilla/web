@@ -60,11 +60,57 @@
     .description {
         flex: 1;
         background: white;
-        max-width: 0%;
+        max-width: 34%;
+        margin-right: -34%;
         z-index: 0;
         @include transition-ease-in-out(250ms);
+        @include flex;
 
-        // display: none;
+        // Content for detail
+        .content {
+            flex: 1;
+            margin: $margin-desktop;
+
+            h1, h2, p {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                font-weight: 500;
+                @include select(text);
+            }
+
+            h1 {
+                font-size: 24px;
+                padding-bottom: 16px;
+            }
+
+            h2 {
+                font-size: 16px;
+                line-height: 26px;
+                opacity: 0.9;
+                padding-bottom: 28px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 26px;
+                opacity: 0.8;
+                font-weight: 500;
+            }
+
+            .break {
+                height: 2px;
+                width: 28px;
+                background: $color-border-solid;
+                margin-bottom: 28px;
+            }
+
+            .action-button {
+                position: absolute;
+                bottom: $margin-desktop;
+                display: inline-block;
+            }
+        }
 
         // Tablet break
         @include device-breakpoint($tablet) {
