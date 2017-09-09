@@ -2,7 +2,7 @@
 $(document).ready(function (event) {
 
     // Force remove url hashes
-    history.replaceState({}, document.title, ".");
+    history.replaceState({}, document.title, '.');
 
     // Check for mobile
     isMobile = $(window).width() <= 1048;

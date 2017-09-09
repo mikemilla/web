@@ -1,5 +1,5 @@
 // Variables
-var listItem, detailedView, background, description, media;
+var listItem, detailedView, background, description, media, initialOffsetX, initialOffsetY;
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -35,7 +35,7 @@ launchSharedElement = function (element) {
 
     // Create the detail item container
     // This is the view that holds the transitioned element
-    body.append('<div class="detailed-view"><div class="background"></div><div class="media"></div><div class="description"><div class="content"></div></div></div>');
+    body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
 
     // Is current item a video?
     if ($(media).is(videoType)) {
@@ -47,71 +47,83 @@ launchSharedElement = function (element) {
 
     // Listen to css changes of shared element
     media.on(cssValue, function (event) {
+        $(media).unbind(cssValue);
 
         // Listen to dom insertion
-        const mediaContainerRef = '.media';
-        $(mediaContainerRef).on(domInsertionValue, function (event) {
+        const detailedViewRef = '.detailed-view';
+        detailedView = $(detailedViewRef);
+        $(detailedViewRef).on(domInsertionValue, function (event) {
+            $(detailedViewRef).unbind(domInsertionValue);
 
-            // Items have been added
-            if ($(event.target).hasClass('work')) {
+            // Hide list item
+            listItem.addClass('hidden');
 
-                // Animate background color
-                $('.background').css('opacity', 1);
+            // Detailed view element references  
+            background = $('.background');
+            description = $('.description');
 
-                // Animate view to center of container
-                // Done with time out to give time to add element to DOM
-                setTimeout(function () {
-                    if (isChrome) {
-                        listItem.addClass('hidden');
-                    }
-                    media.addClass('center');
-                }, 0);
+            // Values for new position
+            const mediaAreaWidth = ($(window).width() / 100) * 66;
+            const mediaAreaHeight = $(window).height();
 
-                // Detailed view element references  
-                detailedView = $('.detailed-view');
-                background = $('.background');
-                description = $('.description');
+            // Animate element to new position
+            media.css({
+                top: (mediaAreaHeight - $(selectedMedia).height()) / 2
+            });
 
-                // Animate elements into view
-                background.css('opacity', 1);
-                description.css('margin-right', 0);
-
-                // Set description info
-                const content = $('.content');
-
-                // Add details to the view
-                if (portfolioItemAtIndex.title) {
-                    content.append('<h1>' + portfolioItemAtIndex.title + '</h2>');
-                }
-                if (portfolioItemAtIndex.role) {
-                    content.append('<h2>' + portfolioItemAtIndex.role + '</h2>')
-                }
-                if (portfolioItemAtIndex.description) {
-                    content.append('<div class="break"></div>');
-                    content.append('<p>' + portfolioItemAtIndex.description + '</p>')
-                }
-                if (portfolioItemAtIndex.url) {
-                    content.append('<a class="action-button" target="_blank" href="' + portfolioItemAtIndex.url + '" type="send-message">' + portfolioItemAtIndex.action + '</a>')
-                }
-
-                // Dismiss detailed view
-                $(mediaContainerRef).click(function (event) {
-                    history.back();
+            // Delay changing left to provide subtle arc motion
+            setTimeout(function () {
+                media.css({
+                    left: (mediaAreaWidth - $(selectedMedia).width()) / 2
                 });
+            }, 25);
+
+            // Animate elements into view
+            background.css('opacity', 1);
+
+            setTimeout(function () {
+                description.css('right', '-66%');
+            }, 75);
+
+            // Set description info
+            const content = $('.content');
+
+            // Add details to the view
+            if (portfolioItemAtIndex.title) {
+                content.append('<h1>' + portfolioItemAtIndex.title + '</h2>');
             }
+            if (portfolioItemAtIndex.role) {
+                content.append('<h2>' + portfolioItemAtIndex.role + '</h2>')
+            }
+            if (portfolioItemAtIndex.description) {
+                content.append('<div class="break"></div>');
+                content.append('<p>' + portfolioItemAtIndex.description + '</p>')
+            }
+            if (portfolioItemAtIndex.url) {
+                content.append('<a class="action-button" target="_blank" href="' + portfolioItemAtIndex.url + '" type="send-message">' + portfolioItemAtIndex.action + '</a>')
+            }
+
+            // Dismiss detailed view
+            background.click(function (event) {
+                history.back();
+            });
         });
 
         // Add shared element to media container
-        media.appendTo(mediaContainerRef);
+        media.appendTo(detailedViewRef);
     });
+
+    // Save initial loading positions
+    initialOffsetY = $(selectedMedia).offset().top - $(document).scrollTop()
+    initialOffsetX = $(selectedMedia).offset().left;
 
     // Set initial positions
     // This is where the shared element transition places the selected element
     media.cssWithListener({
-        width: selectedMedia.getBoundingClientRect().width,
-        height: selectedMedia.getBoundingClientRect().height,
-        top: $(selectedMedia).offset().top - $(document).scrollTop(),
-        left: $(selectedMedia).offset().left
+        width: $(selectedMedia).width(),
+        height: $(selectedMedia).height(),
+        top: initialOffsetY,
+        left: initialOffsetX
     });
 }
 
@@ -119,32 +131,31 @@ launchSharedElement = function (element) {
 dismissSharedElement = function () {
 
     // Animate shared element reseting
-    media.removeClass('center');
-    description.css('max-width', '0%');
+    description.css('right', '-100%');
     background.css('opacity', 0);
 
-    // Listen to background animation
+    // Set initial positions
+    // This is where the shared element transition places the selected element
+    media.cssWithListener({
+        left: initialOffsetX
+    });
+
+    // Delay changing left to provide subtle arc motion
+    setTimeout(function () {
+        media.css({
+            top: initialOffsetY
+        });
+    }, 25);
+
+    // Background animation listener
+    // Slightly faster than the normal media transition
+    // Prevents flicker
     background.one(transitionValues, function (event) {
         background.unbind(transitionValues);
 
         // Show original list item again
-        if (isChrome) {
-            listItem.removeClass('hidden');
-        }
+        listItem.removeClass('hidden');
     });
-
-    // Handle fallback browser dismiss
-    if (!isChrome) {
-        setTimeout(function () {
-
-            // Remove detail view
-            detailedView.remove();
-
-            // Unlock scroll
-            view.css('overflow', 'visible');
-
-        }, 310);
-    }
 
     // Listen to transition shared element
     media.one(transitionValues, function (event) {
