@@ -62,7 +62,6 @@ launchSharedElement = function (element) {
 
                     // Change visibility
                     video.removeClass('hidden');
-                    image.addClass('hidden');
 
                     // Play video
                     video[0].play();
@@ -153,7 +152,6 @@ dismissSharedElement = function () {
     if (video) {
 
         // Change visibility
-        video.addClass('hidden');
         image.removeClass('hidden');
 
         // Play video
