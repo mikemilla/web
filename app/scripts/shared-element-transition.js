@@ -37,12 +37,22 @@ launchSharedElement = function (element) {
     // This is the view that holds the transitioned element
     body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
 
+    // Find image
+    const image = media.children('img');
+
     // Is current item a video?
-    if ($(media).is(videoType)) {
+    if (portfolioItemAtIndex.media.type === videoType) {
+
+        // Find video
+        const video = media.children('video');
+
+        // Change visibility
+        video.removeClass('hidden');
+        image.addClass('hidden');
 
         // Adds the auto play property to the video tag
         // This is supported in safari, but video.play() isn't... 😤
-        media.prop('autoplay', true);
+        video.prop('autoplay', true);
     }
 
     // Listen to css changes of shared element

@@ -3,16 +3,20 @@
     width: 100%;
     position: fixed;
     top: 0px;
-    // @include flex;
-    z-index: 1;
+    z-index: 2;
 
     // Styles for work item
     .work {
         position: absolute;
         @include border($color-border);
-        @include corner-radius(10px);
         @include transition-spring(300ms);
         cursor: default;
+    
+        // Safari bug fix
+        video {
+            overflow: hidden;
+            @include corner-radius(10px);
+        }
     }
 
     // Background of view
@@ -28,7 +32,6 @@
 
     // Description area
     .description {
-        // flex: 1;
         position: absolute;
         background: white;
         width: 100%;

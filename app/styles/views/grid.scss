@@ -51,9 +51,17 @@
       overflow: hidden;
       cursor: pointer;
       @include transition-ease-in-out(200ms);
+      position: relative;
 
       // Desktop hover
       &:hover {
+
+        .work {
+          .test {
+            display: block;
+          }
+        }
+
         &.chrome {
           @include shadow(0px 4px 12px 0px rgba(0,0,0,0.125));
         }
@@ -80,13 +88,6 @@
       &.hidden {
         @include transition-ease-in-out(0ms);
         visibility: hidden;
-      }
-  
-      // Showcased piece
-      .work {
-        width: 100%;
-        overflow: hidden;
-        @include corner-radius(10px);
       }
     }
   }
@@ -116,5 +117,44 @@
         margin-right: $margin-phone;
       }
     }
+  }
+}
+
+// Showcased piece
+// This is also used in the detailed item view
+.work {
+  position: relative;
+  overflow: hidden;
+  @include corner-radius(10px);
+
+  img {
+    width: 100%;
+    &.hidden {
+      display: none;
+    }
+  }
+
+  video {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .test {
+    
+    display: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(red, 0.1);
   }
 }

@@ -84,9 +84,9 @@ $(document).ready(function (event) {
                 var chromeClass = isChrome ? 'chrome' : 'default';
                 var autoplayClass = isMobile ? 'autoplay' : '';
                 if (portfolioItemAtIndex.media.type === videoType) {
-                    gridList.append('<li class="' + chromeClass + '"><video class="work ' + chromeClass + '" ' + autoplayClass + ' muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.thumbnail + '><source src="' + portfolioItemAtIndex.media.src + '"></video></li>');
+                    gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="hidden" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.src + '><source src="' + portfolioItemAtIndex.media.media + '"></video> <div class="test"></div> </div> </li>');                    
                 } else {
-                    gridList.append('<li class="' + chromeClass + '"><img class="work ' + chromeClass + '" src="' + portfolioItemAtIndex.media.src + '"/></li>');
+                    gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="hidden" muted loop playsinline preload="none" poster="#"><source src="#"></video> <div class="test"></div> </div> </li>');
                 }
             }
 
