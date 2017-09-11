@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_fill</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_fill">
+            <path d="M36,0 C16.149,0 0,16.149 0,36 C0,55.851 16.149,72 36,72 C55.851,72 72,55.851 72,36 C72,16.149 55.851,0 36,0 Z" id="Combined-Shape" fill="#303030" fill-rule="nonzero" opacity="0.9"></path>
+            <path d="M22.3636364,21 L34.6363636,21 L34.6363636,23.7272727 L25.6554545,23.7272727 L34.2368182,32.3086364 L32.3086364,34.2368182 L23.7272727,25.6554545 L23.7272727,34.6363636 L21,34.6363636 L21,22.3636364 C21,21.6095455 21.6109091,21 22.3636364,21 Z" id="Shape" fill="#FFFFFF"></path>
+            <path d="M37.7631818,39.6913636 L39.6913636,37.7631818 L48.2727273,46.3445455 L48.2727273,37.3636364 L51,37.3636364 L51,49.6363636 C51,50.3904545 50.3890909,51 49.6363636,51 L37.3636364,51 L37.3636364,48.2727273 L46.3445455,48.2727273 L37.7631818,39.6913636 Z" id="Shape" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

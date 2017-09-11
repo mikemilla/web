@@ -1,5 +1,5 @@
 // Variables
-var listItem, detailedView, background, description, media, initialOffsetX, initialOffsetY;
+var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY;
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -28,6 +28,9 @@ launchSharedElement = function (element) {
     // Clone the current media
     media = $(selectedMedia).clone();
 
+    // Find image
+    image = media.children('img');
+
     // Prevent click through
     media.click(function (event) {
         event.stopPropagation();
@@ -36,24 +39,6 @@ launchSharedElement = function (element) {
     // Create the detail item container
     // This is the view that holds the transitioned element
     body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
-
-    // Find image
-    const image = media.children('img');
-
-    // Is current item a video?
-    if (portfolioItemAtIndex.media.type === videoType) {
-
-        // Find video
-        const video = media.children('video');
-
-        // Change visibility
-        video.removeClass('hidden');
-        image.addClass('hidden');
-
-        // Adds the auto play property to the video tag
-        // This is supported in safari, but video.play() isn't... 😤
-        video.prop('autoplay', true);
-    }
 
     // Listen to css changes of shared element
     media.on(cssValue, function (event) {
@@ -64,6 +49,30 @@ launchSharedElement = function (element) {
         detailedView = $(detailedViewRef);
         $(detailedViewRef).on(domInsertionValue, function (event) {
             $(detailedViewRef).unbind(domInsertionValue);
+
+            // Check for video
+            if (portfolioItemAtIndex.media.type === videoType) {
+
+                // Find video
+                video = media.children('.extra');
+
+                // Listen to when transiton ends
+                media.one(transitionValues, function (event) {
+                    media.unbind(transitionValues);
+
+                    // Change visibility
+                    video.removeClass('hidden');
+                    image.addClass('hidden');
+
+                    // Play video
+                    video[0].play();
+                });
+
+                // Check when video begins playing
+                video[0].addEventListener('playing', function () {
+                    console.log('playing');
+                })
+            }
 
             // Hide list item
             listItem.addClass('hidden');
@@ -139,6 +148,18 @@ launchSharedElement = function (element) {
 
 // Dismiss the shared element
 dismissSharedElement = function () {
+
+    // Check for video
+    if (video) {
+
+        // Change visibility
+        video.addClass('hidden');
+        image.removeClass('hidden');
+
+        // Play video
+        // Just a fallback
+        video[0].pause();
+    }
 
     // Animate shared element reseting
     description.css('right', '-100%');

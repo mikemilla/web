@@ -11,12 +11,6 @@
         @include border($color-border);
         @include transition-spring(300ms);
         cursor: default;
-    
-        // Safari bug fix
-        video {
-            overflow: hidden;
-            @include corner-radius(10px);
-        }
     }
 
     // Background of view

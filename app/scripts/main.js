@@ -83,10 +83,13 @@ $(document).ready(function (event) {
                 // Check media type and add correct list item
                 var chromeClass = isChrome ? 'chrome' : 'default';
                 var autoplayClass = isMobile ? 'autoplay' : '';
-                if (portfolioItemAtIndex.media.type === videoType) {
-                    gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="hidden" muted loop playsinline preload="none" poster=' + portfolioItemAtIndex.media.src + '><source src="' + portfolioItemAtIndex.media.media + '"></video> <div class="test"></div> </div> </li>');                    
-                } else {
-                    gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="hidden" muted loop playsinline preload="none" poster="#"><source src="#"></video> <div class="test"></div> </div> </li>');
+
+                switch (portfolioItemAtIndex.media.type) {
+                    case videoType:
+                        gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="extra hidden" muted loop playsinline preload="none" poster="' + portfolioItemAtIndex.media.src + '"><source src="' + portfolioItemAtIndex.media.extra + '"></video> <div class="overlay ' + portfolioItemAtIndex.media.type + '"></div> </div> </li>');
+                        break;
+                    default:
+                        gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="overlay ' + portfolioItemAtIndex.media.type + '"></div> </div> </li>');
                 }
             }
 
@@ -95,44 +98,6 @@ $(document).ready(function (event) {
 
             // Handle list item interactions
             const listItems = $('.grid ul li');
-
-            // On Hover
-            listItems.mouseover(function () {
-
-                // Prevent clicking on mobile
-                // Kind of a bandaid
-                if (isMobile) {
-                    return;
-                }
-
-                // List item clicks
-                const listItem = $(this);
-
-                // Get media item
-                const media = listItem[0].children[0];
-                if ($(media).is(videoType)) {
-                    media.play();
-                }
-            });
-
-            // Off Hover
-            listItems.mouseout(function () {
-
-                // Prevent clicking on mobile
-                // Kind of a bandaid
-                if (isMobile) {
-                    return;
-                }
-
-                // List item clicks
-                const listItem = $(this);
-
-                // Get media item
-                const media = listItem[0].children[0];
-                if ($(media).is(videoType)) {
-                    media.pause();
-                }
-            });
 
             // Clicks
             listItems.click(function (event) {
