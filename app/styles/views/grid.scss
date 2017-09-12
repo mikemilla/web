@@ -59,7 +59,6 @@
         // Show overlay on hover
         .work {
           .overlay {
-            @include scale(1);
             opacity: 1;
           }
         }
@@ -135,6 +134,7 @@
 .work {
   position: relative;
   overflow: hidden;
+  display: inline-block;
   @include corner-radius(10px);
 
   // Primary content of the item
@@ -166,33 +166,42 @@
     opacity: 0;
     @include fill-parent;
     background: rgba(white, 0.125);
-    @include scale(0.9);
 
-    // Actual indicator
-    &:after {
-      content: '';
-      @include fill-parent;
-      height: 72px;
-      width: 72px;
-      background-size: 100% auto;
-      background-position: center;
-      background-repeat: no-repeat;
+      // Contains the loading indicator
+      // Allows simultaneous animations
+      .icon-container {
+        @include fill-parent;
+        &:after {
+            content: '';
+            @include fill-parent;
+            height: 72px;
+            width: 72px;
+            background-size: 100% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     }
 
     // Set icon for type
     &.video {
-      &:after {
-        background-image: url("/images/icon_play.svg");
+      .icon-container {
+        &:after {
+          background-image: url("/images/icon_play.svg");
+        }
       }
     }
     &.photo {
-      &:after {
-        background-image: url("/images/icon_fill.svg");
+      .icon-container {
+        &:after {
+          background-image: url("/images/icon_fill.svg");
+        }
       }
     }
     &.gif {
-      &:after {
-        background-image: url("/images/icon_play.svg");
+      .icon-container {
+        &:after {
+          background-image: url("/images/icon_play.svg");
+        }
       }
     }
   }

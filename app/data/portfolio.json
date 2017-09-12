@@ -6,9 +6,9 @@
             "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise.png?alt=media&token=dc7f065f-8233-4d91-89d8-3327936b5a6c",
             "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-huntwise.mp4?alt=media&token=d2de6cb0-ce3b-4774-afe7-155372bebc82"
         },
-        "title": "Wind Particles",
+        "title": "HuntWise Wind Interaction",
         "role": "Interaction Design + Android Development",
-        "description": "A subtle interaction to see wind and weather info for a user's hunting location. The particle effect uses wind speed and direction variables from the current selected time."
+        "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time."
     },
     {
         "slug": "huntwise-prediction-ui",
@@ -18,17 +18,19 @@
         },
         "title": "HuntWise Prediction UI",
         "role": "Product Design",
-        "description": "An interface for hunters to see the best times to hunt. This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility."
+        "description": "An interface for hunters to see the best times to hunt, and why those times are the best.<br><br>This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility."
     },
     {
-        "slug": "pesto-ui",
+        "slug": "huntwise-doc",
         "media": {
             "type": "photo",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-pesto.png?alt=media&token=603659b2-0727-4a19-99f3-75e17f404342"
+            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise-3.png?alt=media&token=9e0258cf-b9c5-438c-a2df-be606284a3c6"
         },
-        "title": "Restaurant Menu UI",
-        "role": "Product Design",
-        "description": "An interface for a restaurant chain with blended ideas from real world menus and common app layouts."
+        "title": "DOC",
+        "role": "Interaction Design + Front-end Development",
+        "description": "An idea I had to transform a simple button into a larger surface.",
+        "url": "https://dribbble.com/shots/2061245-Material-Message",
+        "action": "See on Dribbble"
     },
     {
         "slug": "material-message",
@@ -38,7 +40,7 @@
         },
         "title": "Material Message",
         "role": "Interaction Design + Front-end Development",
-        "description": "An idea I had to transform a simple button into a larger interface.",
+        "description": "An idea I had to transform a simple button into a larger surface.",
         "url": "https://dribbble.com/shots/2061245-Material-Message",
         "action": "See on Dribbble"
     },
@@ -51,22 +53,9 @@
         },
         "title": "Word Nerd",
         "role": "Product Design + iOS & Android Development",
-        "description": "A game where you rhyme with as many words as possible! Like Flappy Bird for rhyming.",
+        "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use.",
         "url": "http://mikemilla.com/wordnerd",
         "action": "Install Word Nerd"
-    },
-    {
-        "slug": "simple-scale-interaction",
-        "media": {
-            "type": "video",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-simplescale.png?alt=media&token=ab4dfcf1-ea5e-4d2f-8f5a-1d3c3f148e3b",
-            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-simplescale.mov?alt=media&token=7bed38c8-5009-4deb-9041-a8d1b04ceee0"
-        },
-        "title": "Simple Scale Walkthrough",
-        "role": "Product Design + iOS & Android Development",
-        "description": "A fun weight tracking app without any extra clutter. Supports 6 languages and has a mostly international user base.",
-        "url": "https://simplescale.thehuman.co/",
-        "action": "Install Simple Scale"
     },
     {
         "slug": "coffeecram-interaction",
@@ -78,5 +67,40 @@
         "title": "CoffeeCram Onboarding",
         "role": "iOS Development",
         "description": "A subtle transition that links the user's touch position to a background opacity change."
+    },
+    {
+        "slug": "simple-scale-interaction",
+        "media": {
+            "type": "video",
+            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-simplescale.png?alt=media&token=ab4dfcf1-ea5e-4d2f-8f5a-1d3c3f148e3b",
+            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-simplescale.mov?alt=media&token=7bed38c8-5009-4deb-9041-a8d1b04ceee0"
+        },
+        "title": "Simple Scale",
+        "role": "Product Design + iOS & Android Development",
+        "description": "A fun weight tracking app without any extra clutter!<br><br>Supports 6 languages and has a mostly international user base.",
+        "url": "https://simplescale.thehuman.co/",
+        "action": "Install Simple Scale"
+    },
+    {
+        "slug": "pesto-ui",
+        "media": {
+            "type": "photo",
+            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-pesto.png?alt=media&token=603659b2-0727-4a19-99f3-75e17f404342"
+        },
+        "title": "Restaurant Menu",
+        "role": "Product Design",
+        "description": "An interface for a restaurant chain with blends ideas from real world menus and common app layouts."
+    },
+    {
+        "slug": "huntwise-doc",
+        "media": {
+            "type": "photo",
+            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise-3.png?alt=media&token=9e0258cf-b9c5-438c-a2df-be606284a3c6"
+        },
+        "title": "DOC",
+        "role": "Interaction Design + Front-end Development",
+        "description": "An idea I had to transform a simple button into a larger surface.",
+        "url": "https://dribbble.com/shots/2061245-Material-Message",
+        "action": "See on Dribbble"
     }
 ]
