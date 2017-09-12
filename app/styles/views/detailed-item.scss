@@ -11,6 +11,44 @@
         @include border($color-border);
         @include transition-spring(300ms);
         cursor: default;
+
+        // Shows a loading indicator for videos
+        .loading-indicator {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(white, 0.125);
+            @include transition-ease-in-out(260ms);
+
+            // Fade out
+            &.dismiss {
+                opacity: 0;
+
+                // Scale out
+                .indicator-container {
+                    @include scale-out(180ms);
+                }
+            }
+
+            // Contains the loading indicator
+            // Allows simultaneous animations
+            .indicator-container {
+                @include fill-parent;
+
+                &:after {
+                    content: '';
+                    @include fill-parent;
+                    height: 72px;
+                    width: 72px;
+                    background-size: 100% auto;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url("/images/icon_loading.svg");
+                    @include transition-infinite-rotation(800ms);
+                }
+            }
+        }
     }
 
     // Background of view

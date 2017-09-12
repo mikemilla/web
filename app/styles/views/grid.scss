@@ -50,7 +50,7 @@
       @include corner-radius(10px);
       overflow: hidden;
       cursor: pointer;
-      @include transition-ease-in-out(100ms);
+      @include transition-ease-in-out(150ms);
       position: relative;
 
       // Desktop hover
@@ -59,6 +59,7 @@
         // Show overlay on hover
         .work {
           .overlay {
+            @include scale(1);
             opacity: 1;
           }
         }
@@ -75,6 +76,11 @@
       @include device-breakpoint($tablet) {
         @include transition-ease-in-out(0ms);
         &:hover {
+          .work {
+            .overlay {
+              display: none;
+            }
+          }
           @include shadow(none);
         }
       }
@@ -142,12 +148,9 @@
 
   // Usually a video
   .extra {
-    position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
+    @include fill-parent;
     &.hidden {
       display: none;
     }
@@ -159,27 +162,38 @@
 
   // The view that appears above the item
   .overlay {
-    @include transition-ease-in-out(100ms);
+    @include transition-ease-in-out(150ms);
     opacity: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(black, 0.04);
-    background-size: 72px auto;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include fill-parent;
+    background: rgba(white, 0.125);
+    @include scale(0.9);
+
+    // Actual indicator
+    &:after {
+      content: '';
+      @include fill-parent;
+      height: 72px;
+      width: 72px;
+      background-size: 100% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
     // Set icon for type
     &.video {
-      background-image: url("/images/icon_play.svg");
+      &:after {
+        background-image: url("/images/icon_play.svg");
+      }
     }
     &.photo {
-      background-image: url("/images/icon_fill.svg");
+      &:after {
+        background-image: url("/images/icon_fill.svg");
+      }
     }
     &.gif {
-      background-image: url("/images/icon_play.svg");
+      &:after {
+        background-image: url("/images/icon_play.svg");
+      }
     }
   }
 }

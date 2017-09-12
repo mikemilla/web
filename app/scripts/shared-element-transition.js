@@ -27,6 +27,7 @@ launchSharedElement = function (element) {
 
     // Clone the current media
     media = $(selectedMedia).clone();
+    // media.redraw();
 
     // Find image
     image = media.children('img');
@@ -53,6 +54,9 @@ launchSharedElement = function (element) {
             // Check for video
             if (portfolioItemAtIndex.media.type === videoType) {
 
+                // Add loading indicator
+                media.append('<div class="loading-indicator"><div class="indicator-container"></div></div>');
+
                 // Find video
                 video = media.children('.extra');
 
@@ -69,7 +73,9 @@ launchSharedElement = function (element) {
 
                 // Check when video begins playing
                 video[0].addEventListener('playing', function () {
-                    console.log('playing');
+                    // $('.loading-indicator').remove();
+
+                    $('.loading-indicator').addClass('dismiss');
                 })
             }
 

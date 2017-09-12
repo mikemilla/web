@@ -41,6 +41,16 @@
   border: solid 2px $color;
 }
 
+// Fills the parent
+@mixin fill-parent() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 // Set the style for a button with a color
 @mixin action-style($color) {
   color: $color-font;
@@ -107,4 +117,78 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; 
+}
+
+// Rotates forever
+@mixin transition-infinite-rotation($duration) {
+  @-webkit-keyframes rotate {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  -webkit-animation: rotate $duration linear infinite;
+  -moz-animation: rotate $duration linear infinite;
+  -ms-animation: rotate $duration linear infinite;
+  -o-animation: rotate $duration linear infinite;
+  animation: rotate $duration linear infinite;
+}
+
+// Animates a scale out
+@mixin scale-out($duration) {
+  @-webkit-keyframes scale {
+    from {
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+    }
+    to {
+      -webkit-transform: scale(0);
+      -o-transform: scale(0);
+      transform: scale(0);
+    }
+  }
+  @keyframes scale {
+    from {
+      -ms-transform: scale(1);
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+    }
+    to {
+      -ms-transform: scale(0);
+      -moz-transform: scale(0);
+      -webkit-transform: scale(0);
+      -o-transform: scale(0);
+      transform: scale(0);
+    }
+  }
+  -webkit-animation: scale $duration linear;
+  -moz-animation: scale $duration linear;
+  -ms-animation: scale $duration linear;
+  -o-animation: scale $duration linear;
+  animation: scale $duration linear;
 }
