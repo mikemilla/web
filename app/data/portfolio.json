@@ -13,7 +13,7 @@
     {
         "slug": "huntwise-prediction-ui",
         "media": {
-            "type": "photo",
+            "type": "screenshot",
             "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise-2.png?alt=media&token=e384e991-99c7-4844-9609-86bcb05b7e84"
         },
         "title": "HuntWise Prediction UI",
@@ -84,7 +84,7 @@
     {
         "slug": "pesto-ui",
         "media": {
-            "type": "photo",
+            "type": "screenshot",
             "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-pesto.png?alt=media&token=603659b2-0727-4a19-99f3-75e17f404342"
         },
         "title": "Restaurant Menu",

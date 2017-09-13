@@ -1,5 +1,5 @@
 // Variables
-var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY, sharedElement;
+var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY, initialHeight, initialWidth, sharedElement, portfolioItemAtIndex;
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -17,7 +17,7 @@ launchSharedElement = function (element) {
     const selectedMedia = element.children[0];
 
     // Get portfolio item for selected item
-    const portfolioItemAtIndex = portfolio[listItem.index()];
+    portfolioItemAtIndex = portfolio[listItem.index()];
 
     // Set the url hash
     window.history.pushState('obj', 'newtitle', portfolioItemAtIndex.slug);
@@ -56,7 +56,7 @@ launchSharedElement = function (element) {
         detailedView.on(domInsertionValue, function (event) {
             detailedView.unbind(domInsertionValue);
 
-            // Check for video
+            // Check for video or large photos
             if (portfolioItemAtIndex.media.type === videoType) {
 
                 // Add loading indicator
@@ -75,6 +75,14 @@ launchSharedElement = function (element) {
                 video[0].addEventListener('playing', function () {
                     $('.loading-indicator').addClass('dismiss');
                 })
+            } else if (portfolioItemAtIndex.media.type === photoType) {
+
+                // Handles large photos
+                // Like shots of sketch docs
+                sharedElement.css({
+                    width: $(selectedMedia).width() * 2,
+                    height: $(selectedMedia).height() * 2,
+                });
             }
 
             // Hide list item
@@ -90,13 +98,13 @@ launchSharedElement = function (element) {
 
             // Animate element to new position
             sharedElement.css({
-                top: (mediaAreaHeight - $(selectedMedia).height()) / 2
+                top: portfolioItemAtIndex.media.type === photoType ? (mediaAreaHeight - ($(selectedMedia).height() * 2)) / 2 : (mediaAreaHeight - $(selectedMedia).height()) / 2
             });
 
             // Delay changing left to provide subtle arc motion
             setTimeout(function () {
                 sharedElement.css({
-                    left: (mediaAreaWidth - $(selectedMedia).width()) / 2
+                    left: portfolioItemAtIndex.media.type === photoType ? (mediaAreaWidth - ($(selectedMedia).width() * 2)) / 2 : (mediaAreaWidth - $(selectedMedia).width()) / 2
                 });
             }, 25);
 
@@ -139,135 +147,14 @@ launchSharedElement = function (element) {
     const borderWidth = 2;
     initialOffsetY = ($(selectedMedia).offset().top - $(document).scrollTop()) - borderWidth
     initialOffsetX = $(selectedMedia).offset().left - borderWidth;
+    initialWidth = $(selectedMedia).width();
+    initialHeight = $(selectedMedia).height();
 
     // Set initial positions
     // This is where the shared element transition places the selected element
     sharedElement.cssWithListener({
-        width: $(selectedMedia).width(),
-        height: $(selectedMedia).height(),
-        top: initialOffsetY,
-        left: initialOffsetX
-    });
-
-    return;
-
-    // Find image
-    image = media.children('img');
-
-    // Prevent click through
-    media.click(function (event) {
-        event.stopPropagation();
-    });
-
-    // Create the detail item container
-    // This is the view that holds the transitioned element
-    body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
-
-    // Listen to css changes of shared element
-    media.on(cssValue, function (event) {
-        $(media).unbind(cssValue);
-
-        // Listen to dom insertion
-        const detailedViewRef = '.detailed-view';
-        detailedView = $(detailedViewRef);
-        $(detailedViewRef).on(domInsertionValue, function (event) {
-            $(detailedViewRef).unbind(domInsertionValue);
-
-            // Check for video
-            if (portfolioItemAtIndex.media.type === videoType) {
-
-                // Add loading indicator
-                media.append('<div class="loading-indicator"><div class="indicator-container"></div></div>');
-
-                // Find video
-                video = media.children('.extra');
-
-                // Listen to when transiton ends
-                media.one(transitionValues, function (event) {
-                    media.unbind(transitionValues);
-
-                    // Change visibility
-                    video.removeClass('hidden');
-
-                    // Play video
-                    video[0].play();
-                });
-
-                // Check when video begins playing
-                video[0].addEventListener('playing', function () {
-                    // $('.loading-indicator').remove();
-
-                    $('.loading-indicator').addClass('dismiss');
-                })
-            }
-
-            // Hide list item
-            listItem.addClass('hidden');
-
-            // Detailed view element references  
-            background = $('.background');
-            description = $('.description');
-
-            // Values for new position
-            const mediaAreaWidth = ($(window).width() / 100) * 66;
-            const mediaAreaHeight = $(window).height();
-
-            // Animate element to new position
-            media.css({
-                top: (mediaAreaHeight - $(selectedMedia).height()) / 2
-            });
-
-            // Delay changing left to provide subtle arc motion
-            setTimeout(function () {
-                media.css({
-                    left: (mediaAreaWidth - $(selectedMedia).width()) / 2
-                });
-            }, 25);
-
-            // Animate elements into view
-            background.css('opacity', 1);
-
-            setTimeout(function () {
-                description.css('right', '-66%');
-            }, 75);
-
-            // Set description info
-            const content = $('.content');
-
-            // Add details to the view
-            if (portfolioItemAtIndex.title) {
-                content.append('<h1>' + portfolioItemAtIndex.title + '</h2>');
-            }
-            if (portfolioItemAtIndex.role) {
-                content.append('<h2>' + portfolioItemAtIndex.role + '</h2>')
-            }
-            if (portfolioItemAtIndex.description) {
-                content.append('<div class="break"></div>');
-                content.append('<p>' + portfolioItemAtIndex.description + '</p>')
-            }
-            if (portfolioItemAtIndex.url) {
-                content.append('<a class="action-button" target="_blank" href="' + portfolioItemAtIndex.url + '" type="send-message">' + portfolioItemAtIndex.action + '</a>')
-            }
-
-            // Dismiss detailed view
-            background.click(function (event) {
-                history.back();
-            });
-        });
-
-        // Add shared element to media container
-        media.appendTo(detailedViewRef);
-    });
-
-    // Save initial loading positions
-    initialOffsetY = $(selectedMedia).offset().top - $(document).scrollTop()
-    initialOffsetX = $(selectedMedia).offset().left;
-
-    // Set initial positions
-    // This is where the shared element transition places the selected element
-    media.cssWithListener({
-        width: $(selectedMedia).width(),
-        height: $(selectedMedia).height(),
+        width: initialWidth,
+        height: initialHeight,
         top: initialOffsetY,
         left: initialOffsetX
     });
@@ -285,9 +172,17 @@ dismissSharedElement = function () {
     description.css('right', '-100%');
     background.css('opacity', 0);
 
+    // Handles large photos
+    if (portfolioItemAtIndex.media.type === photoType) {
+        sharedElement.css({
+            width: initialWidth,
+            height: initialHeight,
+        });
+    }
+
     // Set initial positions
     // This is where the shared element transition places the selected element
-    sharedElement.cssWithListener({
+    sharedElement.css({
         left: initialOffsetX
     });
 

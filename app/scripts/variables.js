@@ -8,6 +8,7 @@ const domInsertionValue = 'DOMNodeInserted';
 const cssValue = 'stylechanged';
 const backPressValue = 'popstate';
 const videoType = 'video';
+const photoType = 'photo';
 const gifType = 'gif';
 const imageType = 'img';
 
