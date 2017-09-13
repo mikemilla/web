@@ -84,13 +84,15 @@ $(document).ready(function (event) {
                 var chromeClass = isChrome ? 'chrome' : 'default';
                 var autoplayClass = isMobile ? 'autoplay' : '';
 
-                switch (portfolioItemAtIndex.media.type) {
-                    case videoType:
-                        gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="extra hidden" muted loop playsinline preload="none" poster="' + portfolioItemAtIndex.media.src + '"><source src="' + portfolioItemAtIndex.media.extra + '"></video> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>');
-                        break;
-                    default:
-                        gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>');
-                }
+                gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>');                
+
+                // switch (portfolioItemAtIndex.media.type) {
+                //     case videoType:
+                //         gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <video class="extra hidden" muted loop playsinline preload="none" poster="' + portfolioItemAtIndex.media.src + '"><source src="' + portfolioItemAtIndex.media.extra + '"></video> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>');
+                //         break;
+                //     default:
+                //         gridList.append('<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>');
+                // }
             }
 
             // Show the content view

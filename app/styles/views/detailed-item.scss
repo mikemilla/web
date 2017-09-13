@@ -5,12 +5,21 @@
     top: 0px;
     z-index: 2;
 
-    // Styles for work item
-    .work {
+    // Reference to shared element
+    .shared-element {
         position: absolute;
         @include border($color-border);
         @include transition-spring(300ms);
+        @include corner-radius(10px);
+        overflow: hidden;
         cursor: default;
+
+        // Media of the element
+        video, img {
+            @include corner-radius(10px); // Fixes safari bug
+            position: absolute;
+            width: 100%;
+        }
 
         // Shows a loading indicator for videos
         .loading-indicator {

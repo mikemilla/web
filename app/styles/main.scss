@@ -26,13 +26,11 @@ html, body {
   // Centers view
   margin-left: auto;
   margin-right: auto;
-  $margins: 64px * 2;
-  width: $desktop - $margins;
+  max-width: $max-keyline;
 
   @include device-breakpoint($desktop) {
     padding-left: 64px;
     padding-right: 64px;
-    width: inherit;
   }
 
   @include device-breakpoint($tablet) {

@@ -1,5 +1,5 @@
 // Variables
-var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY;
+var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY, sharedElement;
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -26,8 +26,130 @@ launchSharedElement = function (element) {
     view.css('overflow', 'hidden');
 
     // Clone the current media
-    media = $(selectedMedia).clone();
-    // media.redraw();
+    // media = $(selectedMedia).clone();
+
+    // Create the detail item container
+    // This is the view that holds the transitioned element
+    body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
+
+    // Reference to detailed view
+    detailedView = $('.detailed-view');
+
+    // Add shared elemented
+    detailedView.append('<div class="shared-element"></div>');
+
+    // Get reference to shared element
+    sharedElement = $('.shared-element');
+
+    // Create element for media source
+    if (portfolioItemAtIndex.media.type === videoType) {
+        media = '<video muted loop playsinline preload="none" poster="' + portfolioItemAtIndex.media.src + '"><source src="' + portfolioItemAtIndex.media.extra + '"></video>';
+    } else {
+        media = '<img src="' + portfolioItemAtIndex.media.src + '"/>';
+    }
+
+    // Listen to css changes of shared element
+    sharedElement.on(cssValue, function (event) {
+        sharedElement.unbind(cssValue);
+
+        // Listen to element insertion
+        detailedView.on(domInsertionValue, function (event) {
+            detailedView.unbind(domInsertionValue);
+
+            // Check for video
+            if (portfolioItemAtIndex.media.type === videoType) {
+
+                // Add loading indicator
+                sharedElement.append('<div class="loading-indicator"><div class="indicator-container"></div></div>');
+
+                // Find video
+                video = sharedElement.children('video');
+
+                // Listen to when transiton ends
+                sharedElement.one(transitionValues, function (event) {
+                    sharedElement.unbind(transitionValues);
+                    video[0].play();
+                });
+
+                // Check when video begins playing
+                video[0].addEventListener('playing', function () {
+                    $('.loading-indicator').addClass('dismiss');
+                })
+            }
+
+            // Hide list item
+            listItem.addClass('hidden');
+
+            // Detailed view element references  
+            background = $('.background');
+            description = $('.description');
+
+            // Values for new position
+            const mediaAreaWidth = ($(window).width() / 100) * 66;
+            const mediaAreaHeight = $(window).height();
+
+            // Animate element to new position
+            sharedElement.css({
+                top: (mediaAreaHeight - $(selectedMedia).height()) / 2
+            });
+
+            // Delay changing left to provide subtle arc motion
+            setTimeout(function () {
+                sharedElement.css({
+                    left: (mediaAreaWidth - $(selectedMedia).width()) / 2
+                });
+            }, 25);
+
+            // Animate elements into view
+            background.css('opacity', 1);
+
+            setTimeout(function () {
+                description.css('right', '-66%');
+            }, 75);
+
+            // Set description info
+            const content = $('.content');
+
+            // Add details to the view
+            if (portfolioItemAtIndex.title) {
+                content.append('<h1>' + portfolioItemAtIndex.title + '</h2>');
+            }
+            if (portfolioItemAtIndex.role) {
+                content.append('<h2>' + portfolioItemAtIndex.role + '</h2>')
+            }
+            if (portfolioItemAtIndex.description) {
+                content.append('<div class="break"></div>');
+                content.append('<p>' + portfolioItemAtIndex.description + '</p>')
+            }
+            if (portfolioItemAtIndex.url) {
+                content.append('<a class="action-button" target="_blank" href="' + portfolioItemAtIndex.url + '" type="send-message">' + portfolioItemAtIndex.action + '</a>')
+            }
+
+            // Dismiss detailed view
+            background.click(function (event) {
+                history.back();
+            });
+        });
+
+        // Add media to shared element
+        sharedElement.append(media);
+    });
+
+    // Save initial loading positions
+    const borderWidth = 2;
+    initialOffsetY = ($(selectedMedia).offset().top - $(document).scrollTop()) - borderWidth
+    initialOffsetX = $(selectedMedia).offset().left - borderWidth;
+
+    // Set initial positions
+    // This is where the shared element transition places the selected element
+    sharedElement.cssWithListener({
+        width: $(selectedMedia).width(),
+        height: $(selectedMedia).height(),
+        top: initialOffsetY,
+        left: initialOffsetX
+    });
+
+    return;
 
     // Find image
     image = media.children('img');
@@ -156,12 +278,6 @@ dismissSharedElement = function () {
 
     // Check for video
     if (video) {
-
-        // Change visibility
-        image.removeClass('hidden');
-
-        // Play video
-        // Just a fallback
         video[0].pause();
     }
 
@@ -171,13 +287,13 @@ dismissSharedElement = function () {
 
     // Set initial positions
     // This is where the shared element transition places the selected element
-    media.cssWithListener({
+    sharedElement.cssWithListener({
         left: initialOffsetX
     });
 
     // Delay changing left to provide subtle arc motion
     setTimeout(function () {
-        media.css({
+        sharedElement.css({
             top: initialOffsetY
         });
     }, 25);
@@ -193,8 +309,8 @@ dismissSharedElement = function () {
     });
 
     // Listen to transition shared element
-    media.one(transitionValues, function (event) {
-        media.unbind(transitionValues);
+    sharedElement.one(transitionValues, function (event) {
+        sharedElement.unbind(transitionValues);
 
         // Remove detail view
         detailedView.remove();

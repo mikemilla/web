@@ -18,8 +18,8 @@
 
     // Tablet break
     @include device-breakpoint($desktop) {
-      padding-left: $margin-desktop;
-      padding-right: $margin-desktop;
+      margin-left: $margin-desktop;
+      margin-right: $margin-desktop;
     }
 
     // Tablet break
@@ -27,8 +27,8 @@
       @include columns(2);
       @include column-gap($margin-tablet);
       padding-top: $margin-tablet;
-      padding-left: $margin-tablet;
-      padding-right: $margin-tablet;
+      margin-left: $margin-tablet;
+      margin-right: $margin-tablet;
     }
 
     // Phone break
@@ -36,8 +36,8 @@
       @include columns(1);
       @include column-gap($margin-phone);
       padding-top: $margin-phone;
-      padding-left: $margin-phone;
-      padding-right: $margin-phone;
+      margin-left: $margin-phone;
+      margin-right: $margin-phone;
     }
   
     li {
@@ -46,12 +46,13 @@
       display: inline-block;
       margin-bottom: $margin-desktop;
       background: $color-border-solid;
-      @include border($color-border-solid);
-      @include corner-radius(10px);
       overflow: hidden;
       cursor: pointer;
-      @include transition-ease-in-out(150ms);
       position: relative;
+      @include transition-ease-in-out(150ms);
+      @include border($color-border-solid);
+      @include corner-radius(10px);
+      @include stop-padding-resizing;
 
       // Desktop hover
       &:hover {
