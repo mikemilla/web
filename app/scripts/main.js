@@ -112,7 +112,7 @@ $(document).ready(function (event) {
     }
 
     // Download profile image
-    const profileImageURL = 'https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-profile.png?alt=media&token=ef7ce39a-bcc5-4d35-9deb-0fe478abd372';
+    const profileImageURL = './assets/images/profile_1.png';
     const profileImage = $('<img />').attr('src', profileImageURL).on('load', function () {
 
         // Handle downloaded image

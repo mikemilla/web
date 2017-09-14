@@ -184,24 +184,17 @@
     }
 
     // Set icon for type
-    &.video {
+    &.video, &.gif {
       .icon-container {
         &:after {
-          background-image: url("/images/icon_play.svg");
+          background-image: url("/assets/icons/icon_play.svg");
         }
       }
     }
-    &.photo {
+    &.photo, &.screenshot {
       .icon-container {
         &:after {
-          background-image: url("/images/icon_fill.svg");
-        }
-      }
-    }
-    &.gif {
-      .icon-container {
-        &:after {
-          background-image: url("/images/icon_play.svg");
+          background-image: url("/assets/icons/icon_fill.svg");
         }
       }
     }

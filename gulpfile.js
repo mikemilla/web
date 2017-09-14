@@ -72,9 +72,9 @@ gulp.task('html', ['styles', 'scripts'], () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src('app/assets/**/*')
     .pipe($.cache($.imagemin()))
-    .pipe(gulp.dest('dist/images'));
+    .pipe(gulp.dest('dist/assets'));
 });
 
 gulp.task('fonts', () => {
@@ -118,7 +118,7 @@ gulp.task('serve', () => {
 
     gulp.watch([
       'app/*.html',
-      'app/images/**/*',
+      'app/assets/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);
 

@@ -53,8 +53,8 @@ launchSharedElement = function (element) {
         sharedElement.unbind(cssValue);
 
         // Listen to element insertion
-        detailedView.on(domInsertionValue, function (event) {
-            detailedView.unbind(domInsertionValue);
+        sharedElement.on(domInsertionValue, function (event) {
+            sharedElement.unbind(domInsertionValue);
 
             // Check for video or large photos
             if (portfolioItemAtIndex.media.type === videoType) {
@@ -141,6 +141,7 @@ launchSharedElement = function (element) {
 
         // Add media to shared element
         sharedElement.append(media);
+
     });
 
     // Save initial loading positions
@@ -215,6 +216,12 @@ dismissSharedElement = function () {
 
         // Unlock scroll
         view.css('overflow', 'visible');
+    });
+
+    $('.grid img').each(function () {
+        const originalSrc = $(this).attr('src');
+        console.log(originalSrc);
+        // $(this).attr("src", "/path/to/myimg.jpg?"+ new Date().getTime());
     });
 }
 

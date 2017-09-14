@@ -3,8 +3,8 @@
         "slug": "huntwise-wind-interaction",
         "media": {
             "type": "video",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise.png?alt=media&token=dc7f065f-8233-4d91-89d8-3327936b5a6c",
-            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-huntwise.mp4?alt=media&token=d2de6cb0-ce3b-4774-afe7-155372bebc82"
+            "src": "./assets/images/huntwise_1.png",
+            "extra": "./assets/videos/huntwise_1.mp4"
         },
         "title": "HuntWise Wind Interaction",
         "role": "Interaction Design + Android Development",
@@ -16,7 +16,7 @@
         "slug": "huntwise-prediction-ui",
         "media": {
             "type": "screenshot",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise-2.png?alt=media&token=e384e991-99c7-4844-9609-86bcb05b7e84"
+            "src": "./assets/images/huntwise_2.png"
         },
         "title": "HuntWise Prediction UI",
         "role": "Product Design",
@@ -28,7 +28,7 @@
         "slug": "huntwise-details",
         "media": {
             "type": "photo",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-huntwise-3.png?alt=media&token=94de91e9-7634-43d0-8dca-714673677c1b"
+            "src": "./assets/images/huntwise_3.png"
         },
         "title": "HuntWise Details",
         "role": "Product Design",
@@ -40,11 +40,11 @@
         "slug": "material-message",
         "media": {
             "type": "gif",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-message.gif?alt=media&token=ddaa692b-2664-449a-8f0e-03e6775d4d2b"
+            "src": "./assets/images/message_1.gif"
         },
         "title": "Material Message",
         "role": "Interaction Design + Front-end Development",
-        "description": "An idea I had to transform a simple button into a larger surface.<br><br>Most of this is just hiding and showing elements based on conditions and listeners jQuery is watching for.",
+        "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
         "url": "https://dribbble.com/shots/2061245-Material-Message",
         "action": "See on Dribbble"
     },
@@ -52,8 +52,8 @@
         "slug": "wordnerd-gameplay",
         "media": {
             "type": "video",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-wordnerd.png?alt=media&token=ba791f48-6cde-41e3-9237-e044e4e4957c",
-            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-wordnerd.mp4?alt=media&token=8f88c8a5-dacf-4f75-b8ea-754a43c74a0f"
+            "src": "./assets/images/wordnerd_1.png",
+            "extra": "./assets/videos/wordnerd_1.mp4"
         },
         "title": "Word Nerd",
         "role": "Product Design + iOS & Android Development",
@@ -65,8 +65,8 @@
         "slug": "coffeecram-interaction",
         "media": {
             "type": "video",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-coffeecram.png?alt=media&token=970a61ea-4801-4553-ab4c-ae7f1f7bc1c2",
-            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-coffeecram.mov?alt=media&token=bccbe458-ce44-455a-9e68-e58804c55d7d"
+            "src": "./assets/images/coffeecram_1.png",
+            "extra": "./assets/videos/coffeecram_1.mov"
         },
         "title": "CoffeeCram Onboarding",
         "role": "iOS Development",
@@ -76,8 +76,8 @@
         "slug": "simple-scale-interaction",
         "media": {
             "type": "video",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-simplescale.png?alt=media&token=ab4dfcf1-ea5e-4d2f-8f5a-1d3c3f148e3b",
-            "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/videos%2Fvideo-simple-scale.mov?alt=media&token=f449e5dc-93d3-48c2-ba8d-f957b87dd123"
+            "src": "./assets/images/simplescale_1.png",
+            "extra": "./assets/videos/simplescale_1.mov"
         },
         "title": "Simple Scale",
         "role": "Product Design + iOS & Android Development",
@@ -89,7 +89,7 @@
         "slug": "pesto-ui",
         "media": {
             "type": "screenshot",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-pesto.png?alt=media&token=603659b2-0727-4a19-99f3-75e17f404342"
+            "src": "./assets/images/pesto_1.png"
         },
         "title": "Restaurant Menu UI",
         "role": "Product Design",
@@ -99,7 +99,7 @@
         "slug": "pesto-details",
         "media": {
             "type": "photo",
-            "src": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/images%2Fimage-pesto-2.png?alt=media&token=c8ade661-fb0a-4984-af31-7edd4f632c6a"
+            "src": "./assets/images/pesto_2.png"
         },
         "title": "Restraunt App Details",
         "role": "Product Design",
