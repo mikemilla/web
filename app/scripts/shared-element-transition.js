@@ -217,12 +217,6 @@ dismissSharedElement = function () {
         // Unlock scroll
         view.css('overflow', 'visible');
     });
-
-    $('.grid img').each(function () {
-        const originalSrc = $(this).attr('src');
-        console.log(originalSrc);
-        // $(this).attr("src", "/path/to/myimg.jpg?"+ new Date().getTime());
-    });
 }
 
 // On Back press
