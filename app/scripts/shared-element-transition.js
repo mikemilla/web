@@ -1,5 +1,19 @@
 // Variables
-var listItem, detailedView, background, description, media, video, image, initialOffsetX, initialOffsetY, initialHeight, initialWidth, sharedElement, portfolioItemAtIndex;
+var
+
+    // Views
+    listItem, detailedView,
+    sharedElement, closeButton,
+    background, description,
+    media, video, image,
+
+    // Coordinates & Dimensions
+    initialOffsetX, initialOffsetY,
+    initialHeight, initialWidth,
+    photoWidth, photoHeight,
+
+    // Portfolio
+    portfolioItemAtIndex;
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -25,9 +39,6 @@ launchSharedElement = function (element) {
     // Lock scroll
     view.css('overflow', 'hidden');
 
-    // Clone the current media
-    // media = $(selectedMedia).clone();
-
     // Create the detail item container
     // This is the view that holds the transitioned element
     body.append('<div class="detailed-view"><div class="background"></div><div class="description"><div class="content"></div></div></div>');
@@ -36,10 +47,16 @@ launchSharedElement = function (element) {
     detailedView = $('.detailed-view');
 
     // Add shared elemented
-    detailedView.append('<div class="shared-element"></div>');
+    detailedView.append('<div class="close-button enter"></div> <div class="shared-element"></div>');
 
     // Get reference to shared element
     sharedElement = $('.shared-element');
+
+    // Close button
+    closeButton = $('.close-button');
+    closeButton.click(function () {
+        history.back();
+    });
 
     // Create element for media source
     if (portfolioItemAtIndex.media.type === videoType) {
@@ -77,11 +94,15 @@ launchSharedElement = function (element) {
                 })
             } else if (portfolioItemAtIndex.media.type === photoType) {
 
+                // Dimensions for specific photo
+                photoWidth = ($(selectedMedia).width() * 1.6)
+                photoHeight = ($(selectedMedia).height() * 1.6);
+
                 // Handles large photos
                 // Like shots of sketch docs
                 sharedElement.css({
-                    width: $(selectedMedia).width() * 2,
-                    height: $(selectedMedia).height() * 2,
+                    height: photoHeight,
+                    width: photoWidth
                 });
             }
 
@@ -98,13 +119,17 @@ launchSharedElement = function (element) {
 
             // Animate element to new position
             sharedElement.css({
-                top: portfolioItemAtIndex.media.type === photoType ? (mediaAreaHeight - ($(selectedMedia).height() * 2)) / 2 : (mediaAreaHeight - $(selectedMedia).height()) / 2
+                top: portfolioItemAtIndex.media.type === photoType ?
+                    (mediaAreaHeight - photoHeight) / 2 :
+                    (mediaAreaHeight - $(selectedMedia).height()) / 2
             });
 
             // Delay changing left to provide subtle arc motion
             setTimeout(function () {
                 sharedElement.css({
-                    left: portfolioItemAtIndex.media.type === photoType ? (mediaAreaWidth - ($(selectedMedia).width() * 2)) / 2 : (mediaAreaWidth - $(selectedMedia).width()) / 2
+                    left: portfolioItemAtIndex.media.type === photoType ?
+                        (mediaAreaWidth - photoWidth) / 2 :
+                        (mediaAreaWidth - $(selectedMedia).width()) / 2
                 });
             }, 25);
 
@@ -180,6 +205,10 @@ dismissSharedElement = function () {
             height: initialHeight,
         });
     }
+
+    // Animate close button
+    closeButton.removeClass('enter');
+    closeButton.addClass('exit');
 
     // Set initial positions
     // This is where the shared element transition places the selected element

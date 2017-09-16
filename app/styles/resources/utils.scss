@@ -98,6 +98,14 @@
   transition: all $duration cubic-bezier(0.575, 0.870, 0.000, 1.1);
 }
 
+// Spring timing funcion
+@mixin timing-spring() {
+  -webkit-transition-timing-function: cubic-bezier(0.575, 0.870, 0.000, 1);
+  -moz-transition-timing-function: cubic-bezier(0.575, 0.870, 0.000, 1);
+  -o-transition-timing-function: cubic-bezier(0.575, 0.870, 0.000, 1);
+  transition-timing-function: cubic-bezier(0.575, 0.870, 0.000, 1);
+}
+
 // Scale a view
 @mixin scale($scale) {
   -ms-transform: scale($scale);
