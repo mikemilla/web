@@ -151,6 +151,14 @@
     .cover {
       visibility: visible;
     }
+
+    // Handle when to show specials styles
+    @include device-breakpoint($tablet) {
+      @include shadow(0px 0px 0px 0px transparent);
+      .cover {
+        visibility: hidden;
+      }
+    }
   }
 
   &.hidden {
