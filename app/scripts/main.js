@@ -22,7 +22,7 @@ $(document).ready(function (event) {
     const header = $('header');
     const headerImage = $('header .image');
     const headerTitles = $('header .titles');
-    const gridList = $('.grid ul');
+    const gridList = $('.staggered-grid');
 
     // Lock scroll
     view.css({
@@ -57,7 +57,7 @@ $(document).ready(function (event) {
                 body.css('background', primaryColor);
 
                 // Loop list items in array
-                $('.grid ul li').each(function (index, element) {
+                $('.staggered-grid li').each(function (index, element) {
                     const listItemAtIndex = $(this)
                     const duration = Math.round(parseFloat(listItemAtIndex.css('transition-duration')) * 1000)
 
@@ -88,15 +88,15 @@ $(document).ready(function (event) {
 
                 // Check media type and add list item
                 const chromeClass = isChrome ? 'chrome' : 'default';
-                const listItem = '<li class="' + chromeClass + '"> <div class="work"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="overlay ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div></div> </div> </li>';
-                gridList.append(listItem);                
+                const listItem = '<li class="item"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="cover ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div> </div> </li>';
+                gridList.append(listItem);
             }
 
             // Show the content view
             showContentView();
 
             // Handle list item interactions
-            const listItems = $('.grid ul li');
+            const listItems = $('.staggered-grid li');
 
             // Clicks
             listItems.click(function (event) {

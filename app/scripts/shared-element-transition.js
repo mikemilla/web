@@ -92,6 +92,7 @@ launchSharedElement = function (element) {
                 video[0].addEventListener('playing', function () {
                     $('.loading-indicator').addClass('dismiss');
                 })
+                
             } else if (portfolioItemAtIndex.media.type === photoType) {
 
                 // Dimensions for specific photo

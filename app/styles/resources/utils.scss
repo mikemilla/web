@@ -8,9 +8,9 @@
 
 // Setting columns
 @mixin columns($count) {
-  -webkit-columns: $count;
-  -moz-columns: $count;
-  columns: $count;
+  -moz-column-count: $count;
+  -webkit-column-count: $count;
+  column-count: $count;
 }
 
 // Setting column gap
@@ -49,6 +49,13 @@
   left: 0;
   right: 0;
   margin: auto;
+}
+
+// Flex support
+@mixin hidden-overlay-fix() {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  transform: translateX(0);
 }
 
 // Set the style for a button with a color
