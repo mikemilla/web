@@ -76,7 +76,6 @@
   position: relative;
   overflow: hidden;
   display: inline-block;
-  line-height: 0px; // Fixes bottom gap issue
   margin-bottom: $margin-desktop;
   background: $color-border-solid;
   cursor: pointer;
@@ -98,6 +97,11 @@
   // Phone break
   @include device-breakpoint($phone) {
     margin-bottom: $margin-phone;
+  }
+
+  // Remove last child margin
+  &:last-child {
+    margin-bottom: 0;
   }
 
   &.hidden {
