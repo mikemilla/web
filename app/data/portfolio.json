@@ -1,108 +1,115 @@
 [
-    {
-        "slug": "huntwise-wind-interaction",
-        "media": {
-            "type": "video",
-            "src": "./assets/images/huntwise_1.png",
-            "extra": "./assets/videos/huntwise_1.mp4"
+
+    [
+        {
+            "slug": "huntwise-wind-interaction",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/huntwise_1.png",
+                "extra": "./assets/videos/huntwise_1.mp4"
+            },
+            "title": "HuntWise Wind Interaction",
+            "role": "Interaction Design + Android Development",
+            "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time.<br><br>(I am no longer apart of this project)",
+            "url": "https://huntwise.com/",
+            "action": "Install HuntWise"
         },
-        "title": "HuntWise Wind Interaction",
-        "role": "Interaction Design + Android Development",
-        "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time.<br><br>(I am no longer apart of this project)",
-        "url": "https://huntwise.com/",
-        "action": "Install HuntWise"
-    },
-    {
-        "slug": "huntwise-prediction-ui",
-        "media": {
-            "type": "screenshot",
-            "src": "./assets/images/huntwise_2.png"
+        {
+            "slug": "huntwise-prediction-ui",
+            "media": {
+                "type": "screenshot",
+                "src": "./assets/images/huntwise_2.png"
+            },
+            "title": "HuntWise Prediction UI",
+            "role": "Product Design",
+            "description": "An interface for hunters to see the best times to hunt, and why those times are the best.<br><br>This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility.<br><br>(I am no longer apart of this project)",
+            "url": "https://huntwise.com/",
+            "action": "Install HuntWise"
         },
-        "title": "HuntWise Prediction UI",
-        "role": "Product Design",
-        "description": "An interface for hunters to see the best times to hunt, and why those times are the best.<br><br>This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility.<br><br>(I am no longer apart of this project)",
-        "url": "https://huntwise.com/",
-        "action": "Install HuntWise"
-    },
-    {
-        "slug": "huntwise-details",
-        "media": {
-            "type": "photo",
-            "src": "./assets/images/huntwise_3.png"
+        {
+            "slug": "huntwise-details",
+            "media": {
+                "type": "photo",
+                "src": "./assets/images/huntwise_3.png"
+            },
+            "title": "HuntWise Details",
+            "role": "Product Design",
+            "description": "A couple designs from the prediction section of HuntWise.<br><br>Details and dimensions are super important to show. Without showcasing what a dev needs to pay attention to, the end result could be very different from the design.<br><br>(I am no longer apart of this project)",
+            "url": "https://huntwise.com/",
+            "action": "Install HuntWise"
+        }
+    ],
+    [
+        {
+            "slug": "material-message",
+            "media": {
+                "type": "gif",
+                "src": "./assets/images/message_1.gif"
+            },
+            "title": "Material Message",
+            "role": "Interaction Design + Front-end Development",
+            "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
+            "url": "https://dribbble.com/shots/2061245-Material-Message",
+            "action": "See on Dribbble"
         },
-        "title": "HuntWise Details",
-        "role": "Product Design",
-        "description": "A couple designs from the prediction section of HuntWise.<br><br>Details and dimensions are super important to show. Without showcasing what a dev needs to pay attention to, the end result could be very different from the design.<br><br>(I am no longer apart of this project)",
-        "url": "https://huntwise.com/",
-        "action": "Install HuntWise"
-    },
-    {
-        "slug": "material-message",
-        "media": {
-            "type": "gif",
-            "src": "./assets/images/message_1.gif"
+        {
+            "slug": "wordnerd-gameplay",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/wordnerd_1.png",
+                "extra": "./assets/videos/wordnerd_1.mp4"
+            },
+            "title": "Word Nerd",
+            "role": "Product Design + iOS & Android Development",
+            "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use.",
+            "url": "http://mikemilla.com/wordnerd",
+            "action": "Install Word Nerd"
         },
-        "title": "Material Message",
-        "role": "Interaction Design + Front-end Development",
-        "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
-        "url": "https://dribbble.com/shots/2061245-Material-Message",
-        "action": "See on Dribbble"
-    },
-    {
-        "slug": "wordnerd-gameplay",
-        "media": {
-            "type": "video",
-            "src": "./assets/images/wordnerd_1.png",
-            "extra": "./assets/videos/wordnerd_1.mp4"
+        {
+            "slug": "coffeecram-interaction",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/coffeecram_1.png",
+                "extra": "./assets/videos/coffeecram_1.mov"
+            },
+            "title": "CoffeeCram Onboarding",
+            "role": "iOS Development",
+            "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift."
+        }
+    ],
+    [
+        {
+            "slug": "simple-scale-interaction",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/simplescale_1.png",
+                "extra": "./assets/videos/simplescale_1.mov"
+            },
+            "title": "Simple Scale",
+            "role": "Product Design + iOS & Android Development",
+            "description": "A fun weight tracking app without any extra clutter!<br><br>All the controls and views (including the graph!) are custom. User data is written and read with Firebase's realtime database and authentication.<br><br>The app supports 6 languages, and has a mostly international user base.",
+            "url": "https://simplescale.thehuman.co/",
+            "action": "Install Simple Scale"
         },
-        "title": "Word Nerd",
-        "role": "Product Design + iOS & Android Development",
-        "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use.",
-        "url": "http://mikemilla.com/wordnerd",
-        "action": "Install Word Nerd"
-    },
-    {
-        "slug": "coffeecram-interaction",
-        "media": {
-            "type": "video",
-            "src": "./assets/images/coffeecram_1.png",
-            "extra": "./assets/videos/coffeecram_1.mov"
+        {
+            "slug": "pesto-ui",
+            "media": {
+                "type": "screenshot",
+                "src": "./assets/images/pesto_1.png"
+            },
+            "title": "Restaurant Menu UI",
+            "role": "Product Design",
+            "description": "An interface for a restaurant chain with blends ideas from real world menus and common app layouts."
         },
-        "title": "CoffeeCram Onboarding",
-        "role": "iOS Development",
-        "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift."
-    },
-    {
-        "slug": "simple-scale-interaction",
-        "media": {
-            "type": "video",
-            "src": "./assets/images/simplescale_1.png",
-            "extra": "./assets/videos/simplescale_1.mov"
-        },
-        "title": "Simple Scale",
-        "role": "Product Design + iOS & Android Development",
-        "description": "A fun weight tracking app without any extra clutter!<br><br>All the controls and views (including the graph!) are custom. User data is written and read with Firebase's realtime database and authentication.<br><br>The app supports 6 languages, and has a mostly international user base.",
-        "url": "https://simplescale.thehuman.co/",
-        "action": "Install Simple Scale"
-    },
-    {
-        "slug": "pesto-ui",
-        "media": {
-            "type": "screenshot",
-            "src": "./assets/images/pesto_1.png"
-        },
-        "title": "Restaurant Menu UI",
-        "role": "Product Design",
-        "description": "An interface for a restaurant chain with blends ideas from real world menus and common app layouts."
-    },
-    {
-        "slug": "pesto-details",
-        "media": {
-            "type": "photo",
-            "src": "./assets/images/pesto_2.png"
-        },
-        "title": "Restraunt App Details",
-        "role": "Product Design",
-        "description": "A snippet from the Sketch doc used for designing the restaurant app shown above.<br><br>It's critical to understand how a user may navigate a product. Depicting navigation visually helps everyone understand the app's flow."
-    }
+        {
+            "slug": "pesto-details",
+            "media": {
+                "type": "photo",
+                "src": "./assets/images/pesto_2.png"
+            },
+            "title": "Restraunt App Details",
+            "role": "Product Design",
+            "description": "A snippet from the Sketch doc used for designing the restaurant app shown above.<br><br>It's critical to understand how a user may navigate a product. Depicting navigation visually helps everyone understand the app's flow."
+        }
+    ]
 ]

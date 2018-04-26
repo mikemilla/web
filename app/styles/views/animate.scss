@@ -19,17 +19,15 @@ header {
 }
 
 // Grid
-.staggered-grid {
-  li {
-    opacity: 0;
-    margin-top: 24px;
-    @include transition-ease-in-out(350ms);
+.column {
+  opacity: 0;
+  margin-top: 24px;
+  @include transition-ease-in-out(350ms);
 
-    // Tablet break
-    @include device-breakpoint($tablet) {
-      opacity: 1;
-      margin-top: 0px;
-    }
+  // Tablet break
+  @include device-breakpoint($tablet) {
+    opacity: 1;
+    margin-top: 0px;
   }
 }
 

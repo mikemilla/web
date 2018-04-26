@@ -22,7 +22,7 @@ $(document).ready(function (event) {
     const header = $('header');
     const headerImage = $('header .image');
     const headerTitles = $('header .titles');
-    const gridList = $('.staggered-grid');
+    const gridLists = $('.column');
 
     // Lock scroll
     view.css({
@@ -57,7 +57,7 @@ $(document).ready(function (event) {
                 body.css('background', primaryColor);
 
                 // Loop list items in array
-                $('.staggered-grid li').each(function (index, element) {
+                gridLists.each(function (index, element) {
                     const listItemAtIndex = $(this)
                     const duration = Math.round(parseFloat(listItemAtIndex.css('transition-duration')) * 1000)
 
@@ -77,26 +77,34 @@ $(document).ready(function (event) {
         // Get portfolio from local json
         $.getJSON(jsonPath, function (data) {
 
-            // Loop items in portfolio
-            for (var i = 0; i < data.length; i++) {
+            // Save portfolio
+            portfolio = data
 
-                // Add item to portfolio reference
-                portfolio.push(data[i]);
+            // Loop through list if lists
+            for (var listIndex = 0; listIndex < gridLists.length; listIndex++) {
 
-                // Get item at index
-                const portfolioItemAtIndex = portfolio[i];
+                // Index of portfolio
+                const portfolioListAtIndex = portfolio[listIndex];
 
-                // Check media type and add list item
-                const chromeClass = isChrome ? 'chrome' : 'default';
-                const listItem = '<li class="item"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="cover ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div> </div> </li>';
-                gridList.append(listItem);
+                // Loop items in portfolio
+                for (var i = 0; i < portfolioListAtIndex.length; i++) {
+
+                    // Get item at index
+                    const portfolioItemAtIndex = portfolioListAtIndex[i];
+
+                    // Check media type and add list item
+                    const chromeClass = isChrome ? 'chrome' : 'default';
+                    const listItem = '<li class="item" data-column="' + listIndex + '" data-index="' + i + '"> <img src="' + portfolioItemAtIndex.media.src + '"/> <div class="cover ' + portfolioItemAtIndex.media.type + '"><div class="icon-container"></div> </div> </li>';
+                    $(gridLists[listIndex]).append(listItem);
+                }
             }
 
             // Show the content view
             showContentView();
 
             // Handle list item interactions
-            const listItems = $('.staggered-grid li');
+            // const listItems = $('.staggered-grid li');
+            const listItems = $('.column li');
 
             // Clicks
             listItems.click(function (event) {

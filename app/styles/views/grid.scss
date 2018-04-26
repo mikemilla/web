@@ -1,15 +1,55 @@
 .grid-container {
   background: white;
   width: 100%;
-  @include flex;
-  flex-direction: column;
+
+  // Contains the columns
+  .keylines {
+    widows: 100%;
+    @include flex;
+    flex-direction: row;
+    padding-top: $margin-desktop;
+    padding-bottom: $margin-desktop;
+
+    // Catch tablet
+    @include device-breakpoint($tablet) {
+      flex-direction: column;
+      padding-top: $margin-tablet;
+      padding-bottom: $margin-tablet;
+    }
+
+    // Catch Mobile
+    @include device-breakpoint($phone) {
+      padding-top: $margin-phone;
+      padding-bottom: $margin-phone;
+    }
+
+    // Columns
+    // This is done because the web still doesn't know
+    // how to make modern things (like staggered grids)
+    .column {
+      flex: 1;
+      list-style-type: none;
+      padding: 0;
+
+      // Middle child
+      &:nth-child(2) {
+        margin-left: $margin-desktop;
+        margin-right: $margin-desktop;
+        @include device-breakpoint($tablet) {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+
+  }
 
   // Contain for button
   .button-container {
     z-index: 1;
     
     // Center button
-    @include flex();
+    @include flex;
     justify-content: center;
 
     // Button
@@ -29,41 +69,6 @@
         margin-right: $margin-phone;
       }
     }
-  }
-}
-
-.staggered-grid {
-  position: relative;
-  list-style-type: none;
-  padding: 0;
-	margin-left: auto;
-  margin-right: auto;
-  padding-top: $margin-desktop;
-  max-width: $max-keyline;
-
-  // Desktop
-  @include columns(3);
-  @include column-gap($margin-desktop);
-
-  // Tablet break
-  @include device-breakpoint($desktop) {
-    width: calc(100% - (64px * 2));
-  }
-
-  // Tablet break
-  @include device-breakpoint($tablet) {
-    @include columns(2);
-    @include column-gap($margin-tablet);
-    padding-top: $margin-tablet;
-    width: calc(100% - (32px * 2));
-  }
-
-  // Phone break
-  @include device-breakpoint($phone) {
-    @include columns(1);
-    @include column-gap($margin-phone);
-    padding-top: $margin-phone;
-    width: calc(100% - (24px * 2));
   }
 }
 

@@ -13,7 +13,7 @@ var
     photoWidth, photoHeight,
 
     // Portfolio
-    portfolioItemAtIndex;
+    portfolioItemAtIndex; 
 
 // Launch the shared element
 launchSharedElement = function (element) {
@@ -30,8 +30,13 @@ launchSharedElement = function (element) {
     // Current media for selected list item
     const selectedMedia = element.children[0];
 
+    // Get the data
+    const dataSet = listItem[0].dataset
+    const dataColumn = dataSet.column
+    const dataIndex = dataSet.index
+
     // Get portfolio item for selected item
-    portfolioItemAtIndex = portfolio[listItem.index()];
+    portfolioItemAtIndex = portfolio[dataColumn][dataIndex];
 
     // Set the url hash
     window.history.pushState('obj', 'newtitle', portfolioItemAtIndex.slug);
