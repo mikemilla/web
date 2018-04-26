@@ -30,6 +30,7 @@
       flex: 1;
       list-style-type: none;
       padding: 0;
+      margin-bottom: 0;
 
       // Middle child
       &:nth-child(2) {
@@ -83,6 +84,11 @@
   @include corner-radius(10px);
   @include hidden-overlay-fix;
 
+  // Last item
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   // Image
   img {
     width: 100%;
@@ -92,16 +98,17 @@
   // Tablet break
   @include device-breakpoint($tablet) {
     margin-bottom: $margin-tablet;
+    &:last-child {
+      margin-bottom: $margin-tablet;
+    }
   }
 
   // Phone break
   @include device-breakpoint($phone) {
     margin-bottom: $margin-phone;
-  }
-
-  // Remove last child margin
-  &:last-child {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: $margin-phone;
+    }
   }
 
   &.hidden {
