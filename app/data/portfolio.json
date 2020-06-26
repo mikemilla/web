@@ -98,7 +98,9 @@
             },
             "title": "CoffeeCram Onboarding",
             "role": "iOS Engineering",
-            "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift."
+            "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift.",
+            "url": "https://dribbble.com/shots/3007432-Onboarding-Transitions",
+            "action": "See on Dribbble"
         }
     ],
     [
