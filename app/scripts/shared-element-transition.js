@@ -29,6 +29,8 @@ launchSharedElement = function (element) {
 
     // Current media for selected list item
     const selectedMedia = element.children[0];
+    var destinationHeight = $(selectedMedia).height();
+    var destinationWidth = $(selectedMedia).width();
 
     // Get the data
     const dataSet = listItem[0].dataset
@@ -69,9 +71,6 @@ launchSharedElement = function (element) {
     } else {
         media = '<img src="' + portfolioItemAtIndex.media.src + '"/>';
     }
-
-    let destinationHeight = $(selectedMedia).height();
-    let destinationWidth = $(selectedMedia).width();
 
     // Listen to css changes of shared element
     sharedElement.on(cssValue, function (event) {
