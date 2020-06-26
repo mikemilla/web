@@ -138,7 +138,7 @@
             },
             "title": "Tanto Calendar Interaction",
             "role": "Android UX Engineering",
-            "description": "This is the gesture based interaction to reveal the calendar in a hair stylist scheduling app. This allows users to quickly swipe down and see the calendar without having to click everytime.<br><br>I also solo engineered this entire app.",
+            "description": "This is the gesture based interaction to reveal the calendar in a hair stylist scheduling app. Not only is the gesture a heavy modification on BottomSheet, but the Calendar was completely built from scratch as well.<br><br>This allows users to quickly swipe down and see the calendar without having to click everytime.",
             "url": "https://play.google.com/store/apps/details?id=app.tanto.stylist",
             "action": "Install Tanto"
         },
