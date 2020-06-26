@@ -70,6 +70,9 @@ launchSharedElement = function (element) {
         media = '<img src="' + portfolioItemAtIndex.media.src + '"/>';
     }
 
+    let destinationHeight = $(selectedMedia).height();
+    let destinationWidth = $(selectedMedia).width();
+
     // Listen to css changes of shared element
     sharedElement.on(cssValue, function (event) {
         sharedElement.unbind(cssValue);
@@ -97,20 +100,29 @@ launchSharedElement = function (element) {
                 video[0].addEventListener('playing', function () {
                     $('.loading-indicator').addClass('dismiss');
                 })
+
+                // Ensure the video will be in view
+                const videoHeight = destinationHeight;
+                const viewportHeight = $(window).height() - 32;
+
+                if (videoHeight > viewportHeight) {
+                    const videoWidth = destinationWidth;
+                    const ratio = viewportHeight / videoHeight
+                    const ratioWidth = videoWidth * ratio
+                    destinationHeight = viewportHeight
+                    destinationWidth = ratioWidth
+                }
+
                 
             } else if (portfolioItemAtIndex.media.type === photoType) {
-
-                // Dimensions for specific photo
-                photoWidth = ($(selectedMedia).width() * 1.6)
-                photoHeight = ($(selectedMedia).height() * 1.6);
-
-                // Handles large photos
-                // Like shots of sketch docs
-                sharedElement.css({
-                    height: photoHeight,
-                    width: photoWidth
-                });
+                destinationWidth = ($(selectedMedia).width() * 1.6)
+                destinationHeight = ($(selectedMedia).height() * 1.6);
             }
+
+            sharedElement.css({
+                height: destinationHeight,
+                width: destinationWidth
+            });
 
             // Hide list item
             listItem.addClass('hidden');
@@ -120,22 +132,18 @@ launchSharedElement = function (element) {
             description = $('.description');
 
             // Values for new position
-            const mediaAreaWidth = ($(window).width() / 100) * 66;
+            const mediaAreaWidth = $(window).width() * 0.66;
             const mediaAreaHeight = $(window).height();
 
             // Animate element to new position
             sharedElement.css({
-                top: portfolioItemAtIndex.media.type === photoType ?
-                    (mediaAreaHeight - photoHeight) / 2 :
-                    (mediaAreaHeight - $(selectedMedia).height()) / 2
+                top: (mediaAreaHeight - destinationHeight) / 2
             });
 
             // Delay changing left to provide subtle arc motion
             setTimeout(function () {
                 sharedElement.css({
-                    left: portfolioItemAtIndex.media.type === photoType ?
-                        (mediaAreaWidth - photoWidth) / 2 :
-                        (mediaAreaWidth - $(selectedMedia).width()) / 2
+                    left: (mediaAreaWidth - destinationWidth) / 2
                 });
             }, 25);
 
@@ -204,13 +212,10 @@ dismissSharedElement = function () {
     description.css('right', '-100%');
     background.css('opacity', 0);
 
-    // Handles large photos
-    if (portfolioItemAtIndex.media.type === photoType) {
-        sharedElement.css({
-            width: initialWidth,
-            height: initialHeight,
-        });
-    }
+    sharedElement.css({
+        width: initialWidth,
+        height: initialHeight,
+    });
 
     // Animate close button
     closeButton.removeClass('enter');

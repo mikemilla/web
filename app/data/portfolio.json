@@ -2,6 +2,19 @@
 
     [
         {
+            "slug": "biblelens-walkthrough",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/biblelens_1.png",
+                "extra": "./assets/videos/biblelens_1.mp4"
+            },
+            "title": "Biblelens",
+            "role": "iOS Engineering",
+            "description": "This is a full walkthrough of a bible verse + photo sharing app I helped build.<br><br>This \"Snapchat-esc\" app was full of custom animations and interactions! Take a look at the custom left-right scrolling section 😉<br><br>This app managed to get over 2 million installs before it was taken out of the app store!",
+            "url": "https://www.youversion.com/bible-lens/",
+            "action": "Visit BibleLens"
+        },
+        {
             "slug": "huntwise-wind-interaction",
             "media": {
                 "type": "video",
@@ -9,7 +22,7 @@
                 "extra": "./assets/videos/huntwise_1.mp4"
             },
             "title": "HuntWise Wind Interaction",
-            "role": "Interaction Design + Android Development",
+            "role": "Interaction Design + Android Engineering",
             "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time.<br><br>(I am no longer apart of this project)",
             "url": "https://huntwise.com/",
             "action": "Install HuntWise"
@@ -47,10 +60,23 @@
                 "src": "./assets/images/message_1.gif"
             },
             "title": "Material Message",
-            "role": "Interaction Design + Front-end Development",
+            "role": "Interaction Design + Front-end Engineering",
             "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
             "url": "https://dribbble.com/shots/2061245-Material-Message",
             "action": "See on Dribbble"
+        },
+        {
+            "slug": "sleepsounds-walkthrough",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/sleepsounds_1.png",
+                "extra": "./assets/videos/sleepsounds_1.mp4"
+            },
+            "title": "Sleep Sounds",
+            "role": "Product Design + Android Engineering",
+            "description": "This is a walkthrough of a sound playing app for helping people fall asleep.<br><br>This app depended heavily on the MediaPlayer API and a custom caching layer so all sounds could play offline. It was also fully integrated to support interactive notifications and Google Play Subscriptions.",
+            "url": "http://sleepsounds.com/",
+            "action": "Visit Sleep Sounds"
         },
         {
             "slug": "wordnerd-gameplay",
@@ -60,10 +86,8 @@
                 "extra": "./assets/videos/wordnerd_1.mp4"
             },
             "title": "Word Nerd",
-            "role": "Product Design + iOS & Android Development",
-            "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use.",
-            "url": "http://mikemilla.com/wordnerd",
-            "action": "Install Word Nerd"
+            "role": "Product Design + iOS & Android Engineering",
+            "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use."
         },
         {
             "slug": "coffeecram-interaction",
@@ -73,11 +97,23 @@
                 "extra": "./assets/videos/coffeecram_1.mov"
             },
             "title": "CoffeeCram Onboarding",
-            "role": "iOS Development",
+            "role": "iOS Engineering",
             "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift."
         }
     ],
     [
+        {
+            "slug": "carbon",
+            "media": {
+                "type": "photo",
+                "src": "./assets/images/carbon_1.png"
+            },
+            "title": "Carbon Branding",
+            "role": "Brand Design",
+            "description": "This is the final logo for a crypto currency brand. I also designed and partially developed their website as well.",
+            "url": "https://www.carbon.money/",
+            "action": "Visit Carbon"
+        },
         {
             "slug": "simple-scale-interaction",
             "media": {
@@ -86,10 +122,23 @@
                 "extra": "./assets/videos/simplescale_1.mov"
             },
             "title": "Simple Scale",
-            "role": "Product Design + iOS & Android Development",
+            "role": "Product Design + iOS & Android Engineering",
             "description": "A fun weight tracking app without any extra clutter!<br><br>All the controls and views (including the graph!) are custom. User data is written and read with Firebase's realtime database and authentication.<br><br>The app supports 6 languages, and has a mostly international user base.",
             "url": "https://simplescale.thehuman.co/",
             "action": "Install Simple Scale"
+        },
+        {
+            "slug": "tanto-interaction",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/tanto_1.png",
+                "extra": "./assets/videos/tanto_1.mp4"
+            },
+            "title": "Tanto Calendar Interaction",
+            "role": "Android UX Engineering",
+            "description": "This is the gesture based interaction to reveal the calendar in a hair stylist scheduling app. This allows users to quickly swipe down and see the calendar without having to click everytime.<br><br>I also solo engineered this entire app.",
+            "url": "https://play.google.com/store/apps/details?id=app.tanto.stylist",
+            "action": "Install Tanto"
         },
         {
             "slug": "pesto-ui",

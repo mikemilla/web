@@ -93,6 +93,7 @@
   img {
     width: 100%;
     height: auto;
+    margin-bottom: -4px; // Fix bottom offset bug
   }
 
   // Tablet break

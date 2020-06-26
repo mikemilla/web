@@ -3,7 +3,7 @@ footer {
 
     // List of networks
     ul {
-        overflow: scroll;
+        overflow: hidden;
         -webkit-overflow-scrolling: touch;
         list-style-type: none;
         padding: 0;
@@ -13,6 +13,7 @@ footer {
 
         // Tablet break
         @include device-breakpoint($tablet) {
+            overflow-x: scroll;
             padding: $margin-tablet;
         }
 
