@@ -66,6 +66,17 @@
             "action": "See on Dribbble"
         },
         {
+            "slug": "cheddar-interaction",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/cheddar_1.png",
+                "extra": "./assets/videos/cheddar_1.mp4"
+            },
+            "title": "Cheddar",
+            "role": "Product Design, Android Engineering & Backend Engineering",
+            "description": "This is a full bitcoin wallet that supprts onchain and offchain transactions. The bitcoin node and block explorer (which are completely custom) are hosted on a kubernetes cluster.<br><br>The app is written in Android native kotlin."
+        },
+        {
             "slug": "sleepsounds-walkthrough",
             "media": {
                 "type": "video",
