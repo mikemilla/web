@@ -10,7 +10,7 @@ const shell = require('gulp-shell');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-let dev = true;
+let dev = false;
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
@@ -48,22 +48,23 @@ gulp.task('lint', () => {
   return lint('app/scripts/**/*.js')
     .pipe(gulp.dest('app/scripts'));
 });
+
 gulp.task('lint:test', () => {
   return lint('test/spec/**/*.js')
     .pipe(gulp.dest('test/spec'));
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
+gulp.task('html', () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
+    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: false}})))
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if(/\.html$/, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
-      minifyJS: {compress: {drop_console: true}},
+      minifyJS: {compress: {drop_console: false}},
       processConditionalComments: true,
-      removeComments: true,
+      removeComments: false,
       removeEmptyAttributes: true,
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true
@@ -73,7 +74,6 @@ gulp.task('html', ['styles', 'scripts'], () => {
 
 gulp.task('images', () => {
   return gulp.src('app/assets/**/*')
-    .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/assets'));
 });
 
@@ -92,44 +92,42 @@ gulp.task('extras', () => {
   return gulp.src([
     'app/*',
     '!app/*.html'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'));
+  ]).pipe(gulp.dest('dist'));
 });
 
 gulp.task('firebase', shell.task([
   'firebase deploy'
 ]))
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
-
-gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
-    browserSync.init({
-      notify: false,
-      port: 9000,
-      server: {
-        baseDir: ['.tmp', 'app'],
-        routes: {
-          '/bower_components': 'bower_components'
-        }
-      }
-    });
-
-    gulp.watch([
-      'app/*.html',
-      'app/assets/**/*',
-      '.tmp/fonts/**/*'
-    ]).on('change', reload);
-
-    gulp.watch('app/styles/**/*.scss', ['styles']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/fonts/**/*', ['fonts']);
-    gulp.watch('bower.json', ['wiredep', 'fonts']);
-  });
+gulp.task('clean', () => {
+  return del(['.tmp', 'dist'])
 });
 
-gulp.task('serve:dist', ['default'], () => {
+gulp.task('start', () => {
+  browserSync.init({
+    notify: false,
+    port: 9000,
+    server: {
+      baseDir: ['.tmp', 'app'],
+      routes: {
+        '/bower_components': 'bower_components'
+      }
+    }
+  });
+
+  gulp.watch([
+    'app/*.html',
+    'app/assets/**/*',
+    '.tmp/fonts/**/*'
+  ]).on('change', reload);
+
+  gulp.watch('app/styles/**/*.scss', gulp.series('styles'));
+  gulp.watch('app/scripts/**/*.js', gulp.series('scripts'));
+  gulp.watch('app/fonts/**/*', gulp.series('fonts'));
+  gulp.watch('bower.json', gulp.series('fonts'));
+});
+
+gulp.task('start:dist', () => {
   browserSync.init({
     notify: false,
     port: 9000,
@@ -139,55 +137,14 @@ gulp.task('serve:dist', ['default'], () => {
   });
 });
 
-gulp.task('serve:test', ['scripts'], () => {
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      routes: {
-        '/scripts': '.tmp/scripts',
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
-});
-
-// inject bower components
-gulp.task('wiredep', () => {
-  gulp.src('app/styles/*.scss')
-    .pipe($.filter(file => file.stat && file.stat.size))
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)+/
-    }))
-    .pipe(gulp.dest('app/styles'));
-
-  gulp.src('app/*.html')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)*\.\./
-    }))
-    .pipe(gulp.dest('app'));
-});
-
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'data', 'extras'], () => {
+gulp.task('zip', () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('default', () => {
-  return new Promise(resolve => {
-    dev = false;
-    runSequence(['clean', 'wiredep'], 'build', resolve);
-  });
-});
+gulp.task('build', gulp.series('clean', 'lint', 'styles', 'scripts', 'html', 'images', 'fonts', 'data', 'extras'));
 
-gulp.task('deploy', () => {
-  return new Promise(resolve => {
-    dev = false;
-    runSequence(['clean', 'wiredep'], 'build', 'firebase', resolve);
-  });
-});
+gulp.task('serve', gulp.series('clean', 'styles', 'scripts', 'fonts', 'start'));
+
+gulp.task('serve:dist', gulp.series('clean', 'styles', 'scripts', 'fonts', 'start:dist'));
+
+gulp.task('deploy', gulp.series('build', 'firebase'));

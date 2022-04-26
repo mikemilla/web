@@ -1,11 +1,11 @@
-// Document Ready
-$(document).ready(function (event) {
+// Easter Egg
+console.log('You looked in the console! You must be like me 😉');
+console.log('The code for this app is a little old, but in case you are curious, here is a link to the code for this app on GitHub.');
+console.log('https://github.com/mikemilla/web');
+console.log('Mike ♥️');
 
-    // Easter Egg
-    console.log('You looked in the console!');
-    console.log('In case you are curious, here is a link to the code for this app on GitHub.');
-    console.log('https://github.com/mikemilla/web');
-    console.log('✌️ - Mike');
+// Document Ready
+$(document).ready(function() {
 
     // Force remove url hashes
     history.replaceState({}, document.title, '.');
