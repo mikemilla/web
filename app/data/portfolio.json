@@ -2,6 +2,19 @@
 
     [
         {
+            "slug": "choice-walkthrough",
+            "media": {
+                "type": "video",
+                "src": "./assets/images/choice_1.png",
+                "extra": "./assets/videos/choice_1.mp4"
+            },
+            "title": "Choice App",
+            "role": "Product Design & Flutter Engineering",
+            "description": "Here is a demo of a crypto and stock retirement account investment app entirely written in Flutter. Runs on iOS, Android and Web, supports dark mode and is fully responsive across all screensizes.<br><br>I did most of the design, engineering and lead 2 teams to do the remainder of the efforts.",
+            "url": "https://choiceapp.io",
+            "action": "Try Choice App"
+        },
+        {
             "slug": "biblelens-walkthrough",
             "media": {
                 "type": "video",
@@ -126,6 +139,18 @@
             "description": "This is the final logo for a crypto currency brand. I also designed and partially developed their website as well.",
             "url": "https://www.carbon.money/",
             "action": "Visit Carbon"
+        },
+        {
+            "slug": "choice-product-design",
+            "media": {
+                "type": "photo",
+                "src": "./assets/images/choice_2.png"
+            },
+            "title": "Choice App Product Document",
+            "role": "Product Design",
+            "description": "This is a link to the full design for the Choice App.<br><br>This includes the entire map of the product, all screensizes, usage notes and even some mock http requests.",
+            "url": "https://www.figma.com/file/uzCeZyJsXAyNqVyvk6tcWP/?node-id=4247%3A95230",
+            "action": "See in Figma"
         },
         {
             "slug": "simple-scale-interaction",
