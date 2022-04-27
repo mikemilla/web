@@ -6,7 +6,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/choice_1.png",
-                "extra": "./assets/videos/choice_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/choice_1.mp4?alt=media"
             },
             "title": "Choice App",
             "role": "Product Design & Flutter Engineering",
@@ -19,7 +19,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/biblelens_1.png",
-                "extra": "./assets/videos/biblelens_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/biblelens_1.mp4?alt=media"
             },
             "title": "Biblelens",
             "role": "iOS Engineering",
@@ -32,7 +32,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/huntwise_1.png",
-                "extra": "./assets/videos/huntwise_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/huntwise_1.mp4?alt=media"
             },
             "title": "HuntWise Wind Interaction",
             "role": "Interaction Design + Android Engineering",
@@ -83,7 +83,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/cheddar_1.png",
-                "extra": "./assets/videos/cheddar_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/cheddar_1.mp4?alt=media"
             },
             "title": "Cheddar",
             "role": "Product Design, Android Engineering & Backend Engineering",
@@ -94,7 +94,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/sleepsounds_1.png",
-                "extra": "./assets/videos/sleepsounds_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/sleepsounds_1.mp4?alt=media"
             },
             "title": "Sleep Sounds",
             "role": "Product Design + Android Engineering",
@@ -107,7 +107,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/wordnerd_1.png",
-                "extra": "./assets/videos/wordnerd_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/wordnerd_1.mp4?alt=media"
             },
             "title": "Word Nerd",
             "role": "Product Design + iOS & Android Engineering",
@@ -118,7 +118,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/coffeecram_1.png",
-                "extra": "./assets/videos/coffeecram_1.mov"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/coffeecram_1.mov?alt=media"
             },
             "title": "CoffeeCram Onboarding",
             "role": "iOS Engineering",
@@ -157,7 +157,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/simplescale_1.png",
-                "extra": "./assets/videos/simplescale_1.mov"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/simplescale_1.mov?alt=media"
             },
             "title": "Simple Scale",
             "role": "Product Design + iOS & Android Engineering",
@@ -170,7 +170,7 @@
             "media": {
                 "type": "video",
                 "src": "./assets/images/tanto_1.png",
-                "extra": "./assets/videos/tanto_1.mp4"
+                "extra": "https://firebasestorage.googleapis.com/v0/b/portfolio-d6f40.appspot.com/o/tanto_1.mp4?alt=media"
             },
             "title": "Tanto Calendar Interaction",
             "role": "Android UX Engineering",
