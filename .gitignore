@@ -1,8 +1,9 @@
-# Libraries and Components
-node_modules/*
-bower_components/*
-.DS_Store
+# Dependencies
+node_modules/
 
-# Temporary Files
-.tmp/*
-dist/*
+# Next.js
+.next/
+out/
+
+# Misc
+.DS_Store

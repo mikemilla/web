@@ -1,177 +1,126 @@
 [
-
-    [
-        {
-            "slug": "biblelens-walkthrough",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/biblelens_1.png",
-                "extra": "./assets/videos/biblelens_1.mp4"
-            },
-            "title": "Biblelens",
-            "role": "iOS Engineering",
-            "description": "This is a full walkthrough of a bible verse + photo sharing app I helped build.<br><br>This \"Snapchat-esc\" app was full of custom animations and interactions! Take a look at the custom left-right scrolling section 😉<br><br>This app managed to get over 2 million installs before it was taken out of the app store!",
-            "url": "https://www.youversion.com/bible-lens/",
-            "action": "Visit BibleLens"
-        },
-        {
-            "slug": "huntwise-wind-interaction",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/huntwise_1.png",
-                "extra": "./assets/videos/huntwise_1.mp4"
-            },
-            "title": "HuntWise Wind Interaction",
-            "role": "Interaction Design + Android Engineering",
-            "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time.<br><br>(I am no longer apart of this project)",
-            "url": "https://huntwise.com/",
-            "action": "Install HuntWise"
-        },
-        {
-            "slug": "huntwise-prediction-ui",
-            "media": {
-                "type": "screenshot",
-                "src": "./assets/images/huntwise_2.png"
-            },
-            "title": "HuntWise Prediction UI",
-            "role": "Product Design",
-            "description": "An interface for hunters to see the best times to hunt, and why those times are the best.<br><br>This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility.<br><br>(I am no longer apart of this project)",
-            "url": "https://huntwise.com/",
-            "action": "Install HuntWise"
-        },
-        {
-            "slug": "huntwise-details",
-            "media": {
-                "type": "photo",
-                "src": "./assets/images/huntwise_3.png"
-            },
-            "title": "HuntWise Details",
-            "role": "Product Design",
-            "description": "A couple designs from the prediction section of HuntWise.<br><br>Details and dimensions are super important to show. Without showcasing what a dev needs to pay attention to, the end result could be very different from the design.<br><br>(I am no longer apart of this project)",
-            "url": "https://huntwise.com/",
-            "action": "Install HuntWise"
-        }
-    ],
-    [
-        {
-            "slug": "material-message",
-            "media": {
-                "type": "gif",
-                "src": "./assets/images/message_1.gif"
-            },
-            "title": "Material Message",
-            "role": "Interaction Design + Front-end Engineering",
-            "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
-            "url": "https://dribbble.com/shots/2061245-Material-Message",
-            "action": "See on Dribbble"
-        },
-        {
-            "slug": "cheddar-interaction",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/cheddar_1.png",
-                "extra": "./assets/videos/cheddar_1.mp4"
-            },
-            "title": "Cheddar",
-            "role": "Product Design, Android Engineering & Backend Engineering",
-            "description": "This is a full bitcoin wallet that supprts onchain and offchain transactions. The bitcoin node and block explorer (which are completely custom) are hosted on a kubernetes cluster.<br><br>The app is written in Android native kotlin."
-        },
-        {
-            "slug": "sleepsounds-walkthrough",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/sleepsounds_1.png",
-                "extra": "./assets/videos/sleepsounds_1.mp4"
-            },
-            "title": "Sleep Sounds",
-            "role": "Product Design + Android Engineering",
-            "description": "This is a walkthrough of a sound playing app for helping people fall asleep.<br><br>This app depended heavily on the MediaPlayer API and a custom caching layer so all sounds could play offline. It was also fully integrated to support interactive notifications and Google Play Subscriptions.",
-            "url": "http://sleepsounds.com/",
-            "action": "Visit Sleep Sounds"
-        },
-        {
-            "slug": "wordnerd-gameplay",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/wordnerd_1.png",
-                "extra": "./assets/videos/wordnerd_1.mp4"
-            },
-            "title": "Word Nerd",
-            "role": "Product Design + iOS & Android Engineering",
-            "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use."
-        },
-        {
-            "slug": "coffeecram-interaction",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/coffeecram_1.png",
-                "extra": "./assets/videos/coffeecram_1.mov"
-            },
-            "title": "CoffeeCram Onboarding",
-            "role": "iOS Engineering",
-            "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift.",
-            "url": "https://dribbble.com/shots/3007432-Onboarding-Transitions",
-            "action": "See on Dribbble"
-        }
-    ],
-    [
-        {
-            "slug": "carbon",
-            "media": {
-                "type": "photo",
-                "src": "./assets/images/carbon_1.png"
-            },
-            "title": "Carbon Branding",
-            "role": "Brand Design",
-            "description": "This is the final logo for a crypto currency brand. I also designed and partially developed their website as well.",
-            "url": "https://www.carbon.money/",
-            "action": "Visit Carbon"
-        },
-        {
-            "slug": "simple-scale-interaction",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/simplescale_1.png",
-                "extra": "./assets/videos/simplescale_1.mov"
-            },
-            "title": "Simple Scale",
-            "role": "Product Design + iOS & Android Engineering",
-            "description": "A fun weight tracking app without any extra clutter!<br><br>All the controls and views (including the graph!) are custom. User data is written and read with Firebase's realtime database and authentication.<br><br>The app supports 6 languages, and has a mostly international user base.",
-            "url": "https://simplescale.thehuman.co/",
-            "action": "Install Simple Scale"
-        },
-        {
-            "slug": "tanto-interaction",
-            "media": {
-                "type": "video",
-                "src": "./assets/images/tanto_1.png",
-                "extra": "./assets/videos/tanto_1.mp4"
-            },
-            "title": "Tanto Calendar Interaction",
-            "role": "Android UX Engineering",
-            "description": "This is the gesture based interaction to reveal the calendar in a hair stylist scheduling app. Not only is the gesture a heavy modification on BottomSheet, but the Calendar was completely built from scratch as well.<br><br>This allows users to quickly swipe down and see the calendar without having to click everytime.",
-            "url": "https://play.google.com/store/apps/details?id=app.tanto.stylist",
-            "action": "Install Tanto"
-        },
-        {
-            "slug": "pesto-ui",
-            "media": {
-                "type": "screenshot",
-                "src": "./assets/images/pesto_1.png"
-            },
-            "title": "Restaurant Menu UI",
-            "role": "Product Design",
-            "description": "An interface for a restaurant chain with blends ideas from real world menus and common app layouts."
-        },
-        {
-            "slug": "pesto-details",
-            "media": {
-                "type": "photo",
-                "src": "./assets/images/pesto_2.png"
-            },
-            "title": "Restraunt App Details",
-            "role": "Product Design",
-            "description": "A snippet from the Sketch doc used for designing the restaurant app shown above.<br><br>It's critical to understand how a user may navigate a product. Depicting navigation visually helps everyone understand the app's flow."
-        }
-    ]
+  [
+    {
+      "slug": "biblelens-walkthrough",
+      "media": { "type": "video", "src": "/assets/images/biblelens_1.png", "extra": "/assets/videos/biblelens_1.mp4" },
+      "title": "Biblelens",
+      "role": "iOS Engineering",
+      "description": "This is a full walkthrough of a bible verse + photo sharing app I helped build.<br><br>This \"Snapchat-esc\" app was full of custom animations and interactions! Take a look at the custom left-right scrolling section 😉<br><br>This app managed to get over 2 million installs before it was taken out of the app store!",
+      "url": "https://www.youversion.com/bible-lens/",
+      "action": "Visit BibleLens"
+    },
+    {
+      "slug": "huntwise-wind-interaction",
+      "media": { "type": "video", "src": "/assets/images/huntwise_1.png", "extra": "/assets/videos/huntwise_1.mp4" },
+      "title": "HuntWise Wind Interaction",
+      "role": "Interaction Design + Android Engineering",
+      "description": "A subtle interaction to see wind and weather info for a user's hunting location.<br><br>The particle effect uses wind speed and direction variables from the current selected time.<br><br>(I am no longer apart of this project)",
+      "url": "https://huntwise.com/",
+      "action": "Install HuntWise"
+    },
+    {
+      "slug": "huntwise-prediction-ui",
+      "media": { "type": "screenshot", "src": "/assets/images/huntwise_2.png" },
+      "title": "HuntWise Prediction UI",
+      "role": "Product Design",
+      "description": "An interface for hunters to see the best times to hunt, and why those times are the best.<br><br>This design was based on metrics, testing, and feedback that resulted in a good balance of visuals and usablility.<br><br>(I am no longer apart of this project)",
+      "url": "https://huntwise.com/",
+      "action": "Install HuntWise"
+    },
+    {
+      "slug": "huntwise-details",
+      "media": { "type": "photo", "src": "/assets/images/huntwise_3.png" },
+      "title": "HuntWise Details",
+      "role": "Product Design",
+      "description": "A couple designs from the prediction section of HuntWise.<br><br>Details and dimensions are super important to show. Without showcasing what a dev needs to pay attention to, the end result could be very different from the design.<br><br>(I am no longer apart of this project)",
+      "url": "https://huntwise.com/",
+      "action": "Install HuntWise"
+    }
+  ],
+  [
+    {
+      "slug": "material-message",
+      "media": { "type": "gif", "src": "/assets/images/message_1.gif" },
+      "title": "Material Message",
+      "role": "Interaction Design + Front-end Engineering",
+      "description": "An idea I had to transform a simple button into a larger surface.<br><br>This is made with jQuery listening for css transition changes and conditions.",
+      "url": "https://dribbble.com/shots/2061245-Material-Message",
+      "action": "See on Dribbble"
+    },
+    {
+      "slug": "cheddar-interaction",
+      "media": { "type": "video", "src": "/assets/images/cheddar_1.png", "extra": "/assets/videos/cheddar_1.mp4" },
+      "title": "Cheddar",
+      "role": "Product Design, Android Engineering & Backend Engineering",
+      "description": "This is a full bitcoin wallet that supprts onchain and offchain transactions. The bitcoin node and block explorer (which are completely custom) are hosted on a kubernetes cluster.<br><br>The app is written in Android native kotlin."
+    },
+    {
+      "slug": "sleepsounds-walkthrough",
+      "media": { "type": "video", "src": "/assets/images/sleepsounds_1.png", "extra": "/assets/videos/sleepsounds_1.mp4" },
+      "title": "Sleep Sounds",
+      "role": "Product Design + Android Engineering",
+      "description": "This is a walkthrough of a sound playing app for helping people fall asleep.<br><br>This app depended heavily on the MediaPlayer API and a custom caching layer so all sounds could play offline. It was also fully integrated to support interactive notifications and Google Play Subscriptions.",
+      "url": "http://sleepsounds.com/",
+      "action": "Visit Sleep Sounds"
+    },
+    {
+      "slug": "wordnerd-gameplay",
+      "media": { "type": "video", "src": "/assets/images/wordnerd_1.png", "extra": "/assets/videos/wordnerd_1.mp4" },
+      "title": "Word Nerd",
+      "role": "Product Design + iOS & Android Engineering",
+      "description": "A game where you rhyme with as many words as possible without letting the timer end. (Like Flappy Bird for rhyming)<br><br>Users are scored based on the amount of syllables they use."
+    },
+    {
+      "slug": "coffeecram-interaction",
+      "media": { "type": "video", "src": "/assets/images/coffeecram_1.png", "extra": "/assets/videos/coffeecram_1.mov" },
+      "title": "CoffeeCram Onboarding",
+      "role": "iOS Engineering",
+      "description": "A subtle transition that links the user's touch position to a background opacity change.<br><br>Essentially, a UIView is changing it's alpha value based on the offset of the x-position in the UICollectionView. That same x-position also changes the position of the pagination dot.<br><br>Written in Swift.",
+      "url": "https://dribbble.com/shots/3007432-Onboarding-Transitions",
+      "action": "See on Dribbble"
+    }
+  ],
+  [
+    {
+      "slug": "carbon",
+      "media": { "type": "photo", "src": "/assets/images/carbon_1.png" },
+      "title": "Carbon Branding",
+      "role": "Brand Design",
+      "description": "This is the final logo for a crypto currency brand. I also designed and partially developed their website as well.",
+      "url": "https://www.carbon.money/",
+      "action": "Visit Carbon"
+    },
+    {
+      "slug": "simple-scale-interaction",
+      "media": { "type": "video", "src": "/assets/images/simplescale_1.png", "extra": "/assets/videos/simplescale_1.mov" },
+      "title": "Simple Scale",
+      "role": "Product Design + iOS & Android Engineering",
+      "description": "A fun weight tracking app without any extra clutter!<br><br>All the controls and views (including the graph!) are custom. User data is written and read with Firebase's realtime database and authentication.<br><br>The app supports 6 languages, and has a mostly international user base.",
+      "url": "https://simplescale.thehuman.co/",
+      "action": "Install Simple Scale"
+    },
+    {
+      "slug": "tanto-interaction",
+      "media": { "type": "video", "src": "/assets/images/tanto_1.png", "extra": "/assets/videos/tanto_1.mp4" },
+      "title": "Tanto Calendar Interaction",
+      "role": "Android UX Engineering",
+      "description": "This is the gesture based interaction to reveal the calendar in a hair stylist scheduling app. Not only is the gesture a heavy modification on BottomSheet, but the Calendar was completely built from scratch as well.<br><br>This allows users to quickly swipe down and see the calendar without having to click everytime.",
+      "url": "https://play.google.com/store/apps/details?id=app.tanto.stylist",
+      "action": "Install Tanto"
+    },
+    {
+      "slug": "pesto-ui",
+      "media": { "type": "screenshot", "src": "/assets/images/pesto_1.png" },
+      "title": "Restaurant Menu UI",
+      "role": "Product Design",
+      "description": "An interface for a restaurant chain with blends ideas from real world menus and common app layouts."
+    },
+    {
+      "slug": "pesto-details",
+      "media": { "type": "photo", "src": "/assets/images/pesto_2.png" },
+      "title": "Restraunt App Details",
+      "role": "Product Design",
+      "description": "A snippet from the Sketch doc used for designing the restaurant app shown above.<br><br>It's critical to understand how a user may navigate a product. Depicting navigation visually helps everyone understand the app's flow."
+    }
+  ]
 ]
