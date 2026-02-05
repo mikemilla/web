@@ -159,10 +159,10 @@ export function DetailModal({ item, sourceRect, onClose }: DetailModalProps) {
         ref={sharedElementRef}
         className="shared-element"
         style={{
-          left: displayRect.left,
-          top: displayRect.top,
-          width: displayRect.width,
-          height: displayRect.height,
+          left: displayRect?.left ?? 0,
+          top: displayRect?.top ?? 0,
+          width: displayRect?.width ?? 0,
+          height: displayRect?.height ?? 0,
         }}
       >
         {isVideo ? (
