@@ -167,12 +167,14 @@ header .titles p {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-weight: 600;
+  font-weight: 500;
   user-select: text;
 }
 
 header .titles h1 {
   font-size: 30px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
   padding-top: 64px;
   padding-bottom: 32px;
   color: var(--color-primary);
@@ -180,16 +182,18 @@ header .titles h1 {
 
 header .titles h2 {
   font-size: 18px;
-  line-height: 26px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   opacity: 0.9;
   padding-bottom: 16px;
 }
 
 header .titles p {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   opacity: 0.8;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 header .titles .action-button {
