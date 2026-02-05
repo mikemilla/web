@@ -51,7 +51,7 @@ export function Footer() {
             className="action-button"
             target="_blank"
             rel="noopener noreferrer"
-            href="/assets/files/mikemiller_resume_2020.pdf"
+            href="/assets/files/mikemiller_resume_2026.pdf"
             data-type="resume"
           >
             Resume
