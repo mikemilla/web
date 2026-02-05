@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
+  // Required for Firebase App Hosting (expects standalone build and routes-manifest)
+  output: 'standalone',
   images: { unoptimized: true },
 };
 
